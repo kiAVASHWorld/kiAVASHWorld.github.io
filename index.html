@@ -2,7 +2,20 @@
 <html>
 <title>kiAVASHWorld</title>
 <body>
-<h1>Hello World</h1>
-<p>Hey I'm kiAVASHWorld</p>
+<h2 id="hw">Hello World</h2>
+<h1 id="kw">Hey I'm kiAVASHWorld</h1>
+<button onclick="rc()">Random Color</button>
+<script>
+function rc()
+{
+var c1 = Math.floor((Math.random() * 255) + 1);
+var c2 = Math.floor((Math.random() * 255) + 1);
+var c3 = Math.floor((Math.random() * 255) + 1);
+document.getElementById('kw').style.color = 'rgb('+ c1 + ',' + c2 + ',' + c3 + ')';
+document.getElementById('kw').style.backgroundColor = 'rgb('+ (255-c1) + ',' + (255-c2) + ',' + (255-c3) + ')';
+document.getElementById('hw').style.color = 'rgb('+ (255-c1) + ',' + (255-c2) + ',' + (255-c3) + ')';
+document.getElementById('hw').style.backgroundColor = 'rgb('+ c1 + ',' + c2 + ',' + c3 + ')';
+}
+</script>
 </body>
 </html>
