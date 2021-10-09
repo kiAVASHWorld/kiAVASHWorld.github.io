@@ -4,13 +4,15 @@
 <body id="body">
 <h2 id="hw">Hello World</h2>
 <h1 id="kw">I'm kiAVASHWorld</h1>
+<div id="rca">
 <button onclick="rc()">Random Color</button>
 <br></br>
-<div id="rca"><button onclick="rca()">Random Color Auto</button></div>
+<button onclick="rca()">Random Color Auto</button>
+</div>
 <script>
 function rca()
 {
-document.getElementById('rca').innerHTML = '<button onclick="rca()" disabled="">Random Color Auto</button>';
+document.getElementById('rca').innerHTML = '<button onclick="rc()" disabled="">Random Color</button><br></br><button onclick="rca()" disabled="">Random Color Auto</button>'
 setInterval(function()
 {
 var c1 = Math.floor((Math.random() * 255) + 1);
