@@ -49,5 +49,33 @@ border: 3px solid red;
 background-color: cyan;
 }
 </style>
+<p id="p"></p>
+<button id="start()">start</button>
+<textarea id="p1"></textarea>
+<script>
+function httpGetAsync(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.status == 200)
+            document.getElementById('p').innerHTML += xmlHttp.responseText;
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+function getGiftCode() {
+let code = 'http://discord.gift/';
+let dict = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+for(var i = 0; i < 16; i++){
+code = code + dict.charAt(Math.floor(Math.random() * dict.length));
+document.getElementById('p1').value += code
+httpGetAsync(code)
+}
+}
+for(var i = 1;i<i+1*2;i++)
+    {
+        getGiftCode()
+    }
+</script>
 </body>
 </html>
