@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<title>kiAVASHWorld</title>
+<body id="body">
+<h2 id="hw">Hello World</h2>
+<h1 id="kw">I'm kiAVASHWorld</h1>
+<div id="rca">
+<p id="XY"></p>
+<script>
+function point(X,Y)
+{
+document.getElementById('XY').innerHTML = "Mouse Location: X: "+X+" Y:"+Y;
+}
+onmousemove = function(e){point(e.clientX, e.clientY);}
+</script>
+<button onclick="rc()">Random Color</button>
+<br></br>
+<button onclick="rca()">Random Color Auto</button>
+</div>
+<script>
+function rca()
+{
+document.getElementById('rca').innerHTML = '<button onclick="rc()" disabled="">Random Color</button><br></br><button onclick="rca()" disabled="">Random Color Auto</button>'
+setInterval(function()
+{
+var c1 = Math.floor((Math.random() * 255) + 1);
+var c2 = Math.floor((Math.random() * 255) + 1);
+var c3 = Math.floor((Math.random() * 255) + 1);
+document.getElementById('kw').style.color = 'rgb('+ c1 + ',' + c2 + ',' + c3 + ')';
+document.getElementById('kw').style.backgroundColor = 'rgb('+ (255-c1) + ',' + (255-c2) + ',' + (255-c3) + ')';
+document.getElementById('hw').style.color = 'rgb('+ (255-c1) + ',' + (255-c2) + ',' + (255-c3) + ')';
+document.getElementById('hw').style.backgroundColor = 'rgb('+ c1 + ',' + c2 + ',' + c3 + ')';}, 500);
+}
+function rc()
+{
+var c1 = Math.floor((Math.random() * 255) + 1);
+var c2 = Math.floor((Math.random() * 255) + 1);
+var c3 = Math.floor((Math.random() * 255) + 1);
+document.getElementById('kw').style.color = 'rgb('+ c1 + ',' + c2 + ',' + c3 + ')';
+document.getElementById('kw').style.backgroundColor = 'rgb('+ (255-c1) + ',' + (255-c2) + ',' + (255-c3) + ')';
+document.getElementById('hw').style.color = 'rgb('+ (255-c1) + ',' + (255-c2) + ',' + (255-c3) + ')';
+document.getElementById('hw').style.backgroundColor = 'rgb('+ c1 + ',' + c2 + ',' + c3 + ')';
+}
+</script>
+<style>
+button
+{
+border: 3px solid red;
+background-color: cyan;
+}
+</style>
+<p id="p"></p>
+<button id="start()">start</button>
+<textarea id="p1"></textarea>
+</body>
+</html>
