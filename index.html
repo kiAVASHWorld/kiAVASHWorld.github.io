@@ -71,6 +71,11 @@
       };
       document.body.appendChild(script);
       setInterval(function(){canvas.style.width = (screen.availHeight*0.8*1.777777778)+"px";canvas.style.height = (screen.availHeight*0.8)+"px";},1000);
+      (function() {
+    window.alert = function() {
+      window.location.reload();
+    };
+})();
     </script>
   </body>
 </html>
