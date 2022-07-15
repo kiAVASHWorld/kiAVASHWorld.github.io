@@ -53,8 +53,8 @@
           mobileWarning.style.display = "none";
         }, 5000);
       } else {
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.height = (screen.availHeight * 0.8);
+        canvas.style.width = (canvas.style.height * 1.7777777778);
       }
       loadingBar.style.display = "block";
 
@@ -74,8 +74,7 @@
       };
       document.body.appendChild(script);
       if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        document.querySelector("#unity-canvas").style.width = "640px";
-        document.querySelector("#unity-canvas").style.height = "480px";
+        //
       }
     </script>
   </body>
