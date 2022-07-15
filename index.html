@@ -44,20 +44,11 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var mobileWarning = document.querySelector("#unity-mobile-warning");
-
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        container.className = "unity-mobile";
-        config.devicePixelRatio = 1;
-        mobileWarning.style.display = "block";
-        setTimeout(() => {
-          mobileWarning.style.display = "none";
-        }, 5000);
-      } else {
+      
         canvas.style.height = (screen.availHeight*0.8)+"px";
         canvas.style.width = (screen.availHeight*0.8*1.777777778)+"px";
         canvas.style.left = (screen.availWidth - canvas.style.width) / 2+"px";
         canvas.style.top = (screen.availHeight - canvas.style.height) / 2+"px";
-      }
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
