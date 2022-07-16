@@ -70,7 +70,7 @@
         });
       };
       document.body.appendChild(script);
-      setInterval(function(){canvas.style.width = (screen.availHeight*0.8*1.777777778)+"px";canvas.style.height = (screen.availHeight*0.8)+"px";},1000);
+      setInterval(function(){canvas.style.width = (screen.availHeight*0.8*1.777777778)+"px";canvas.style.height = (screen.availHeight*0.8)+"px";canvas.style.left = (screen.availWidth - canvas.style.width) / 2+"px";canvas.style.top = (screen.availHeight - canvas.style.height) / 2+"px";},1000);
       (function() {
     window.alert = function() {
       window.location.reload();
