@@ -48,6 +48,8 @@
       if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         container.className = "unity-mobile";
       } else {
+        canvas.style.height = 960+"px";
+        canvas.style.width = 600+"px";
         if(loadingBar.style.display == "none")
         {
         canvas.style.height = (screen.availHeight*0.8)+"px";
