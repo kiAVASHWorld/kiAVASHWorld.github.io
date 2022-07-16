@@ -48,6 +48,9 @@
       if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
         container.className = "unity-mobile";
         document.querySelector("#unity-footer").style.display = "block";
+        document.querySelector("#unity-webgl-logo").style.display = "block";
+        document.querySelector("#unity-fullscreen-button").style.display = "block";
+        document.querySelector("#unity-build-title").style.display = "block";
       } else {
         canvas.style.width = "1060px";
         canvas.style.height = "600px";
