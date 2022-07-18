@@ -6,6 +6,17 @@
     <title>Super kiAVASHWorld</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <script type="text/javascript">
+        (function(){
+        var now = new Date();
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.async = true;
+        var script_address = 'https://cdn.yektanet.com/js/kiavashworld.github.io/native-kiavashworld.github.io-26404.js';
+        script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
+        head.appendChild(script);
+        })();
+    </script>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -25,6 +36,7 @@
         <div id="unity-build-title">Super kiAVASHWorld</div>
       </div>
     </div>
+    <div id="pos-article-display-73108"></div>
     <script>
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/html unity.loader.js";
