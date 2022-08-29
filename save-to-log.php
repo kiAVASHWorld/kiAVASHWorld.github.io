@@ -17,4 +17,5 @@ if( $retval == true ) {
 }else {
      echo "Message could not be sent...";
 }
+//echo "<h2>"+$_POST['message']+"</h2>";
 ?>
