@@ -20,8 +20,8 @@
       }
     </style>
     <script>
-        document.getElementById("toolbar").style.right = window.innerWidth/2+"px";
-        setInterval(function(){document.getElementById("toolbar").style.right = window.innerWidth/2+"px";},500)
+        document.getElementById("toolbar").style.right = window.innerWidth/2-document.getElementById("toolbar").clientHeight*2+"px";
+        setInterval(function(){document.getElementById("toolbar").style.right = (window.innerWidth/2-document.getElementById("toolbar").clientHeight*2)+"px";},500)
       var scenes_name = ["learn_letters","find_letter","learn_numbers","find_number","math"];
       function goto_scene(scene_name)
       {
