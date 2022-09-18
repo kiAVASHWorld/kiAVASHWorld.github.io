@@ -20,7 +20,8 @@
       }
     </style>
     <script>
-      setInterval(function(){document.getElementById("toolbar").style.right = window.innerWidth/2+"px";},500)
+        document.getElementById("toolbar").style.right = window.innerWidth/2+"px";
+        setInterval(function(){document.getElementById("toolbar").style.right = window.innerWidth/2+"px";},500)
       var scenes_name = ["learn_letters","find_letter","learn_numbers","find_number","math"];
       function goto_scene(scene_name)
       {
@@ -637,5 +638,11 @@ function onc_find_number(num)
     </script>
   </div>
 </body>
+<div id="license" style="position: absolute;">
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Learn English</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://kiavashworld.github.io/" property="cc:attributionName" rel="cc:attributionURL">https://kiavashworld.github.io/</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://kiavashworld.github.io/" rel="dct:source">https://kiavashworld.github.io/</a>.
+</div>
+<script>
+    document.getElementById("license").style.top = (window.innerHeight-document.getElementById("license").clientHeight*2)+"px";
+    setInterval(function(){document.getElementById("license").style.top = (window.innerHeight-document.getElementById("license").clientHeight)+"px";},500);
+</script>
 </html>
