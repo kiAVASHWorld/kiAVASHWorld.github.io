@@ -5,10 +5,19 @@
     <body>
         <div id="toolbar" style="border: 2.5px solid black;position:absolute;right: 640px;">
             <button class="toolbar" onclick="goto_scene('learn_letters')">learn letters</button>
+            <h class="pad_toolbar"></h>
+            <h class="pad_toolbar"></h>
             <button class="toolbar" onclick="goto_scene('find_letter')">find letter</button>
+            <h class="pad_toolbar"></h>
+            <h class="pad_toolbar"></h>
             <button class="toolbar" onclick="goto_scene('learn_numbers')">learn numbers</button>
+            <h class="pad_toolbar"></h>
+            <h class="pad_toolbar"></h>
             <button class="toolbar" onclick="goto_scene('find_number')">find number</button>
+            <h class="pad_toolbar"></h>
+            <h class="pad_toolbar"></h>
             <button class="toolbar" onclick="goto_scene('math')">math</button>
+            <h class="pad_toolbar"></h>
     </div>
     <style>
     button.toolbar
@@ -18,14 +27,26 @@
         width: 75px;
         height: 75px;
     }
+    .pad_toolbar
+    {
+        padding: 2.5px 2.5px;
+    }
+    .pad_letters
+    {
+        padding: 20px 20px;
+    }
+    .pad_numbers
+    {
+        padding: 30px 30px;
+    }
     </style>
     <script>
         setInterval(
         function()
         {
-            var w_zoom = (100 / (1280 / innerWidth));
-            var h_zoom = (100 / (720 / innerHeight));
-            if(w_zoom < h_zoom)
+            var w_zoom = (100 / (1536 / innerWidth));
+            var h_zoom = (100 / (722 / innerHeight));
+            if(w_zoom < h_zoom || w_zoom == h_zoom)
             {
                 document.body.style.zoom = w_zoom+"%";
             }
@@ -215,7 +236,7 @@ window.speechSynthesis.onvoiceschanged = () => {
       numclass = "number_-";
       for(var xx = 0;xx<document.getElementsByClassName(numclass).length;xx++)
       {
-        if(document.getElementsByClassName(numclass)[xx].innerHTML.length < 100){document.getElementsByClassName(numclass)[xx].innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="87px" height="32px"><image  x="0px" y="0px" width="87px" height="32px"  xlink:href="data:img/png;base64,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" /></svg>';}
+        if(document.getElementsByClassName(numclass)[xx].innerHTML.length < 100){document.getElementsByClassName(numclass)[xx].innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="87px" height="60px"><image  x="0px" y="0px" width="87px" height="32px"  xlink:href="data:img/png;base64,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" /></svg>';}
       }
       numclass = "number_=";
       for(var xx = 0;xx<document.getElementsByClassName(numclass).length;xx++)
@@ -364,32 +385,56 @@ window.speechSynthesis.onvoiceschanged = () => {
         <br></br>
         <br></br>
         <br></br>
-        <br></br>
         <button class="learn_letters_b" onclick="learn_letters('A')"><h class="letter_a"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('B')"><h class="letter_b"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('C')"><h class="letter_c"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('D')"><h class="letter_d"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('E')"><h class="letter_e"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('F')"><h class="letter_f"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('G')"><h class="letter_g"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('H')"><h class="letter_h"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('I')"><h class="letter_i"></h></button>
+        <br></br>
         <button class="learn_letters_b" onclick="learn_letters('J')"><h class="letter_j"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('K')"><h class="letter_k"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('L')"><h class="letter_l"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('M')"><h class="letter_m"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('N')"><h class="letter_n"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('O')"><h class="letter_o"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('P')"><h class="letter_p"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('Q')"><h class="letter_q"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('R')"><h class="letter_r"></h></button>
+        <br></br>
         <button class="learn_letters_b" onclick="learn_letters('S')"><h class="letter_s"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('T')"><h class="letter_t"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('U')"><h class="letter_u"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('V')"><h class="letter_v"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('W')"><h class="letter_w"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('X')"><h class="letter_x"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('Y')"><h class="letter_y"></h></button>
+        <h class="pad_letters"></h>
         <button class="learn_letters_b" onclick="learn_letters('Z')"><h class="letter_z"></h></button>
         <script>
             function learn_letters(text)
@@ -413,33 +458,57 @@ window.speechSynthesis.onvoiceschanged = () => {
     <div id="find_letter_box" disabled style="display: none;">
         <button id="start_find_letter_b" style="font-size: 150px;" onclick="start_find_letter()">Start</button>
         <br></br>
+        <button class="find_letter_b" onclick="onc_find_letter('A')"><h class="letter_a"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('B')"><h class="letter_b"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('C')"><h class="letter_c"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('D')"><h class="letter_d"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('E')"><h class="letter_e"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('F')"><h class="letter_f"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('G')"><h class="letter_g"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('H')"><h class="letter_h"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('I')"><h class="letter_i"></h></button>
         <br></br>
-        <button class="find_letter_b" onclick="onc_find_letter('A')" disabled><h class="letter_a" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('B')" disabled><h class="letter_b" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('C')" disabled><h class="letter_c" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('D')" disabled><h class="letter_d" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('E')" disabled><h class="letter_e" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('F')" disabled><h class="letter_f" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('G')" disabled><h class="letter_g" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('H')" disabled><h class="letter_h" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('I')" disabled><h class="letter_i" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('J')" disabled><h class="letter_j" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('K')" disabled><h class="letter_k" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('L')" disabled><h class="letter_l" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('M')" disabled><h class="letter_m" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('N')" disabled><h class="letter_n" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('O')" disabled><h class="letter_o" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('P')" disabled><h class="letter_p" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('Q')" disabled><h class="letter_q" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('R')" disabled><h class="letter_r" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('S')" disabled><h class="letter_s" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('T')" disabled><h class="letter_t" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('U')" disabled><h class="letter_u" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('V')" disabled><h class="letter_v" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('W')" disabled><h class="letter_w" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('X')" disabled><h class="letter_x" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('Y')" disabled><h class="letter_y" style="opacity:25%;"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('Z')" disabled><h class="letter_z" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('J')"><h class="letter_j"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('K')"><h class="letter_k"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('L')"><h class="letter_l"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('M')"><h class="letter_m"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('N')"><h class="letter_n"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('O')"><h class="letter_o"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('P')"><h class="letter_p"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('Q')"><h class="letter_q"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('R')"><h class="letter_r"></h></button>
+        <br></br>
+        <button class="find_letter_b" onclick="onc_find_letter('S')"><h class="letter_s"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('T')"><h class="letter_t"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('U')"><h class="letter_u"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('V')"><h class="letter_v"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('W')"><h class="letter_w"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('X')"><h class="letter_x"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('Y')"><h class="letter_y"></h></button>
+        <h class="pad_letters"></h>
+        <button class="find_letter_b" onclick="onc_find_letter('Z')"><h class="letter_z"></h></button>
         <script>
     ////////////////////////////////////////////////////////question
 var letter = null;
@@ -490,26 +559,45 @@ function onc_find_letter(let)
         <br></br>
         <br></br>
         <button class="learn_numbers_b" onclick="learn_numbers('0')"><h class="number_0"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('1')"><h class="number_1"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('2')"><h class="number_2"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('3')"><h class="number_3"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('4')"><h class="number_4"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('5')"><h class="number_5"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('6')"><h class="number_6"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('7')"><h class="number_7"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('8')"><h class="number_8"></h></button>
-        <button class="learn_numbers_b" onclick="learn_numbers('9')"><h class="number_9"></h></button>
-        <button class="learn_numbers_b" onclick="learn_numbers('10')"><h class="number_10"></h></button>
         <br></br>
+        <button class="learn_numbers_b" onclick="learn_numbers('9')"><h class="number_9"></h></button>
+        <h class="pad_numbers"></h>
+        <button class="learn_numbers_b" onclick="learn_numbers('10')"><h class="number_10"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('11')"><h class="number_11"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('12')"><h class="number_12"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('13')"><h class="number_13"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('14')"><h class="number_14"></h></button>
+        <br></br>
         <button class="learn_numbers_b" onclick="learn_numbers('15')"><h class="number_15"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('16')"><h class="number_16"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('17')"><h class="number_17"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('18')"><h class="number_18"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('19')"><h class="number_19"></h></button>
+        <h class="pad_numbers"></h>
         <button class="learn_numbers_b" onclick="learn_numbers('20')"><h class="number_20"></h></button>
         <script>
             function learn_numbers(text)
@@ -533,28 +621,46 @@ function onc_find_letter(let)
     <div id="find_number_box" disabled style="display: none;">
     <button id="start_find_number_b" style="font-size: 150px;" onclick="start_find_number()">Start</button>
     <br></br>
-    <br></br>
     <button class="find_number_b" onclick="onc_find_number(0)" disabled><h class="number_0" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(1)" disabled><h class="number_1" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(2)" disabled><h class="number_2" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(3)" disabled><h class="number_3" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(4)" disabled><h class="number_4" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(5)" disabled><h class="number_5" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(6)" disabled><h class="number_6" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(7)" disabled><h class="number_7" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(8)" disabled><h class="number_8" style="opacity:25%;"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(9)" disabled><h class="number_9" style="opacity:25%;"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(10)" disabled><h class="number_10" style="opacity:25%;"></h></button>
     <br></br>
+    <button class="find_number_b" onclick="onc_find_number(9)" disabled><h class="number_9" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
+    <button class="find_number_b" onclick="onc_find_number(10)" disabled><h class="number_10" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(11)" disabled><h class="number_11" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(12)" disabled><h class="number_12" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(13)" disabled><h class="number_13" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(14)" disabled><h class="number_14" style="opacity:25%;"></h></button>
+    <br></br>
     <button class="find_number_b" onclick="onc_find_number(15)" disabled><h class="number_15" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(16)" disabled><h class="number_16" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(17)" disabled><h class="number_17" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(18)" disabled><h class="number_18" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(19)" disabled><h class="number_19" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="find_number_b" onclick="onc_find_number(20)" disabled><h class="number_20" style="opacity:25%;"></h></button>
   <style>
     button.find_number_b
@@ -609,28 +715,46 @@ function onc_find_number(num)
     <button id="start_math_b" style="font-size: 150px;" onclick="start_math()">Start</button>
     <h id="math_q" style="font-size:100px;position: absolute;right: 600px;top: 100px;"></h>
     <br></br>
-    <br></br>
     <button class="math_b" onclick="onc_math(0)" disabled><h class="number_0" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(1)" disabled><h class="number_1" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(2)" disabled><h class="number_2" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(3)" disabled><h class="number_3" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(4)" disabled><h class="number_4" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(5)" disabled><h class="number_5" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(6)" disabled><h class="number_6" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(7)" disabled><h class="number_7" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(8)" disabled><h class="number_8" style="opacity:25%;"></h></button>
-    <button class="math_b" onclick="onc_math(9)" disabled><h class="number_9" style="opacity:25%;"></h></button>
-    <button class="math_b" onclick="onc_math(10)" disabled><h class="number_10" style="opacity:25%;"></h></button>
     <br></br>
+    <button class="math_b" onclick="onc_math(9)" disabled><h class="number_9" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
+    <button class="math_b" onclick="onc_math(10)" disabled><h class="number_10" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(11)" disabled><h class="number_11" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(12)" disabled><h class="number_12" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(13)" disabled><h class="number_13" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(14)" disabled><h class="number_14" style="opacity:25%;"></h></button>
+    <br></br>
     <button class="math_b" onclick="onc_math(15)" disabled><h class="number_15" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(16)" disabled><h class="number_16" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(17)" disabled><h class="number_17" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(18)" disabled><h class="number_18" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(19)" disabled><h class="number_19" style="opacity:25%;"></h></button>
+    <h class="pad_numbers"></h>
     <button class="math_b" onclick="onc_math(20)" disabled><h class="number_20" style="opacity:25%;"></h></button>
     <style>
         button.math_b
