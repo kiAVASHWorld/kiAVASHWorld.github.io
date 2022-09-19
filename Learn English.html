@@ -1,4 +1,4 @@
-<html lang="en" onresize="size()">
+<html lang="en">
     <head>
         <title>Learn English</title>
     </head>
@@ -21,7 +21,7 @@
     </style>
     <script>
         document.getElementById("toolbar").style.right = window.innerWidth/2-document.getElementById("toolbar").clientHeight*2+"px";
-        window.addEventListener('resize', function(){document.getElementById("toolbar").style.right = (window.innerWidth/2-document.getElementById("toolbar").clientHeight*2)+"px";});
+        setInterval(function(){document.getElementById("toolbar").style.right = (window.innerWidth/2-document.getElementById("toolbar").clientHeight*2)+"px";},500);
       var scenes_name = ["learn_letters","find_letter","learn_numbers","find_number","math"];
       function goto_scene(scene_name)
       {
@@ -581,7 +581,7 @@ function onc_find_number(num)
         }
     </style>
     <script>
-      window.addEventListener('resize', function(){document.getElementById("math_q").style.right = window.innerWidth/2.75+"px";document.getElementById("math_q").style.top = window.innerHeight/7+"px";});
+      setInterval(function(){document.getElementById("math_q").style.right = window.innerWidth/2.75+"px";document.getElementById("math_q").style.top = window.innerHeight/7+"px";},500);
       var number1 = null;
       var number2 = null;
       var number3 = null;
@@ -644,7 +644,7 @@ function onc_find_number(num)
 </div>
 <script>
     document.getElementById("license").style.top = (window.innerHeight-document.getElementById("license").clientHeight*2.25)+"px";
-    window.addEventListener('resize', function(){document.getElementById("license").style.top = (window.innerHeight-document.getElementById("license").clientHeight*1.125)+"px";});
+    setInterval(function(){document.getElementById("license").style.top = (window.innerHeight-document.getElementById("license").clientHeight*1.125)+"px";},500);
     load_images();
 </script>
 </html>
