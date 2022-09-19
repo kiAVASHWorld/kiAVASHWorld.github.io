@@ -365,32 +365,50 @@ window.speechSynthesis.onvoiceschanged = () => {
         <br></br>
         <br></br>
         <br></br>
-        <button onclick="speaking('A')"><h class="letter_a"></h></button>
-        <button onclick="speaking('B')"><h class="letter_b"></h></button>
-        <button onclick="speaking('C')"><h class="letter_c"></h></button>
-        <button onclick="speaking('D')"><h class="letter_d"></h></button>
-        <button onclick="speaking('E')"><h class="letter_e"></h></button>
-        <button onclick="speaking('F')"><h class="letter_f"></h></button>
-        <button onclick="speaking('G')"><h class="letter_g"></h></button>
-        <button onclick="speaking('H')"><h class="letter_h"></h></button>
-        <button onclick="speaking('I')"><h class="letter_i"></h></button>
-        <button onclick="speaking('J')"><h class="letter_j"></h></button>
-        <button onclick="speaking('K')"><h class="letter_k"></h></button>
-        <button onclick="speaking('L')"><h class="letter_l"></h></button>
-        <button onclick="speaking('M')"><h class="letter_m"></h></button>
-        <button onclick="speaking('N')"><h class="letter_n"></h></button>
-        <button onclick="speaking('O')"><h class="letter_o"></h></button>
-        <button onclick="speaking('P')"><h class="letter_p"></h></button>
-        <button onclick="speaking('Q')"><h class="letter_q"></h></button>
-        <button onclick="speaking('R')"><h class="letter_r"></h></button>
-        <button onclick="speaking('S')"><h class="letter_s"></h></button>
-        <button onclick="speaking('T')"><h class="letter_t"></h></button>
-        <button onclick="speaking('U')"><h class="letter_u"></h></button>
-        <button onclick="speaking('V')"><h class="letter_v"></h></button>
-        <button onclick="speaking('W')"><h class="letter_w"></h></button>
-        <button onclick="speaking('X')"><h class="letter_x"></h></button>
-        <button onclick="speaking('Y')"><h class="letter_y"></h></button>
-        <button onclick="speaking('Z')"><h class="letter_z"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('A')"><h class="letter_a"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('B')"><h class="letter_b"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('C')"><h class="letter_c"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('D')"><h class="letter_d"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('E')"><h class="letter_e"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('F')"><h class="letter_f"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('G')"><h class="letter_g"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('H')"><h class="letter_h"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('I')"><h class="letter_i"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('J')"><h class="letter_j"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('K')"><h class="letter_k"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('L')"><h class="letter_l"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('M')"><h class="letter_m"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('N')"><h class="letter_n"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('O')"><h class="letter_o"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('P')"><h class="letter_p"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('Q')"><h class="letter_q"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('R')"><h class="letter_r"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('S')"><h class="letter_s"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('T')"><h class="letter_t"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('U')"><h class="letter_u"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('V')"><h class="letter_v"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('W')"><h class="letter_w"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('X')"><h class="letter_x"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('Y')"><h class="letter_y"></h></button>
+        <button class="learn_letters_b" onclick="learn_letters('Z')"><h class="letter_z"></h></button>
+        <script>
+            function learn_letters(text)
+            {
+                for(var xx = 0;xx<26;xx++)
+                {
+                    document.getElementsByClassName("learn_letters_b")[xx].disabled = true;
+                    document.getElementsByClassName("learn_letters_b")[xx].children[0].style.opacity = "25%";
+                }
+                speaking(text);
+                speech.onend = function(){
+                    for(var xx = 0;xx<26;xx++)
+                    {
+                        document.getElementsByClassName("learn_letters_b")[xx].disabled = false;
+                        document.getElementsByClassName("learn_letters_b")[xx].children[0].style.opacity = "100%";
+                    }
+                };
+            }
+        </script>
     </div>
     <div id="find_letter_box" disabled style="display: none;">
         <button id="start_find_letter_b" style="font-size: 150px;" onclick="start_find_letter()">Start</button>
@@ -471,28 +489,46 @@ function onc_find_letter(let)
         <br></br>
         <br></br>
         <br></br>
-        <button onclick="speaking('0')"><h class="number_0"></h></button>
-        <button onclick="speaking('1')"><h class="number_1"></h></button>
-        <button onclick="speaking('2')"><h class="number_2"></h></button>
-        <button onclick="speaking('3')"><h class="number_3"></h></button>
-        <button onclick="speaking('4')"><h class="number_4"></h></button>
-        <button onclick="speaking('5')"><h class="number_5"></h></button>
-        <button onclick="speaking('6')"><h class="number_6"></h></button>
-        <button onclick="speaking('7')"><h class="number_7"></h></button>
-        <button onclick="speaking('8')"><h class="number_8"></h></button>
-        <button onclick="speaking('9')"><h class="number_9"></h></button>
-        <button onclick="speaking('10')"><h class="number_10"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('0')"><h class="number_0"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('1')"><h class="number_1"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('2')"><h class="number_2"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('3')"><h class="number_3"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('4')"><h class="number_4"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('5')"><h class="number_5"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('6')"><h class="number_6"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('7')"><h class="number_7"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('8')"><h class="number_8"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('9')"><h class="number_9"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('10')"><h class="number_10"></h></button>
         <br></br>
-        <button onclick="speaking('11')"><h class="number_11"></h></button>
-        <button onclick="speaking('12')"><h class="number_12"></h></button>
-        <button onclick="speaking('13')"><h class="number_13"></h></button>
-        <button onclick="speaking('14')"><h class="number_14"></h></button>
-        <button onclick="speaking('15')"><h class="number_15"></h></button>
-        <button onclick="speaking('16')"><h class="number_16"></h></button>
-        <button onclick="speaking('17')"><h class="number_17"></h></button>
-        <button onclick="speaking('18')"><h class="number_18"></h></button>
-        <button onclick="speaking('19')"><h class="number_19"></h></button>
-        <button onclick="speaking('20')"><h class="number_20"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('11')"><h class="number_11"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('12')"><h class="number_12"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('13')"><h class="number_13"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('14')"><h class="number_14"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('15')"><h class="number_15"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('16')"><h class="number_16"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('17')"><h class="number_17"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('18')"><h class="number_18"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('19')"><h class="number_19"></h></button>
+        <button class="learn_numbers_b" onclick="learn_numbers('20')"><h class="number_20"></h></button>
+        <script>
+            function learn_numbers(text)
+            {
+                for(var xx = 0;xx<21;xx++)
+                {
+                    document.getElementsByClassName("learn_numbers_b")[xx].disabled = true;
+                    document.getElementsByClassName("learn_numbers_b")[xx].children[0].style.opacity = "25%";
+                }
+                speaking(text);
+                speech.onend = function(){
+                    for(var xx = 0;xx<21;xx++)
+                    {
+                        document.getElementsByClassName("learn_numbers_b")[xx].disabled = false;
+                        document.getElementsByClassName("learn_numbers_b")[xx].children[0].style.opacity = "100%";
+                    }
+                };
+            }
+        </script>
     </div>
     <div id="find_number_box" disabled style="display: none;">
     <button id="start_find_number_b" style="font-size: 150px;" onclick="start_find_number()">Start</button>
