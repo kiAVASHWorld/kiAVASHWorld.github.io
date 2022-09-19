@@ -3,7 +3,7 @@
         <title>Learn English</title>
     </head>
     <body>
-        <div id="toolbar" style="border: 2.5px solid black;position:absolute;">
+        <div id="toolbar" style="border: 2.5px solid black;position:absolute;right: 640px;">
             <button class="toolbar" onclick="goto_scene('learn_letters')">learn letters</button>
             <button class="toolbar" onclick="goto_scene('find_letter')">find letter</button>
             <button class="toolbar" onclick="goto_scene('learn_numbers')">learn numbers</button>
@@ -11,20 +11,32 @@
             <button class="toolbar" onclick="goto_scene('math')">math</button>
     </div>
     <style>
-      button.toolbar
-      {
+    button.toolbar
+    {
         border: none;
         border-radius:1000000px;
         width: 75px;
         height: 75px;
-      }
+    }
     </style>
     <script>
-        document.getElementById("toolbar").style.right = window.innerWidth/2-document.getElementById("toolbar").clientHeight*2+"px";
-        setInterval(function(){document.getElementById("toolbar").style.right = (window.innerWidth/2-document.getElementById("toolbar").clientHeight*2)+"px";},500);
-      var scenes_name = ["learn_letters","find_letter","learn_numbers","find_number","math"];
-      function goto_scene(scene_name)
-      {
+        setInterval(
+        function()
+        {
+            var w_zoom = (100 / (1280 / innerWidth));
+            var h_zoom = (100 / (720 / innerHeight));
+            if(w_zoom < h_zoom)
+            {
+                document.body.style.zoom = w_zoom+"%";
+            }
+            if(h_zoom < w_zoom)
+            {
+                document.body.style.zoom = h_zoom+"%";
+            }
+        },100);
+        var scenes_name = ["learn_letters","find_letter","learn_numbers","find_number","math"];
+        function goto_scene(scene_name)
+        {
         if(document.getElementById(scene_name+"_box") != null)
         {
         for(var xx = 0;xx<scenes_name.length;xx++){
@@ -36,9 +48,9 @@
         }
         else
         {
-          console.error("Scene: "+scene_name+" Not Find");
+        console.error("Scene: "+scene_name+" Not Find");
         }
-      }
+        }
       let speech = new SpeechSynthesisUtterance();
 speech.lang = "en";
 
@@ -384,32 +396,32 @@ window.speechSynthesis.onvoiceschanged = () => {
         <button id="start_find_letter_b" style="font-size: 150px;" onclick="start_find_letter()">Start</button>
         <br></br>
         <br></br>
-        <button class="find_letter_b" onclick="onc_find_letter('A')" disabled><h class="letter_a"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('B')" disabled><h class="letter_b"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('C')" disabled><h class="letter_c"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('D')" disabled><h class="letter_d"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('E')" disabled><h class="letter_e"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('F')" disabled><h class="letter_f"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('G')" disabled><h class="letter_g"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('H')" disabled><h class="letter_h"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('I')" disabled><h class="letter_i"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('J')" disabled><h class="letter_j"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('K')" disabled><h class="letter_k"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('L')" disabled><h class="letter_l"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('M')" disabled><h class="letter_m"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('N')" disabled><h class="letter_n"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('O')" disabled><h class="letter_o"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('P')" disabled><h class="letter_p"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('Q')" disabled><h class="letter_q"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('R')" disabled><h class="letter_r"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('S')" disabled><h class="letter_s"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('T')" disabled><h class="letter_t"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('U')" disabled><h class="letter_u"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('V')" disabled><h class="letter_v"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('W')" disabled><h class="letter_w"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('X')" disabled><h class="letter_x"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('Y')" disabled><h class="letter_y"></h></button>
-        <button class="find_letter_b" onclick="onc_find_letter('Z')" disabled><h class="letter_z"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('A')" disabled><h class="letter_a" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('B')" disabled><h class="letter_b" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('C')" disabled><h class="letter_c" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('D')" disabled><h class="letter_d" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('E')" disabled><h class="letter_e" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('F')" disabled><h class="letter_f" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('G')" disabled><h class="letter_g" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('H')" disabled><h class="letter_h" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('I')" disabled><h class="letter_i" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('J')" disabled><h class="letter_j" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('K')" disabled><h class="letter_k" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('L')" disabled><h class="letter_l" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('M')" disabled><h class="letter_m" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('N')" disabled><h class="letter_n" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('O')" disabled><h class="letter_o" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('P')" disabled><h class="letter_p" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('Q')" disabled><h class="letter_q" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('R')" disabled><h class="letter_r" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('S')" disabled><h class="letter_s" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('T')" disabled><h class="letter_t" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('U')" disabled><h class="letter_u" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('V')" disabled><h class="letter_v" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('W')" disabled><h class="letter_w" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('X')" disabled><h class="letter_x" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('Y')" disabled><h class="letter_y" style="opacity:25%;"></h></button>
+        <button class="find_letter_b" onclick="onc_find_letter('Z')" disabled><h class="letter_z" style="opacity:25%;"></h></button>
         <script>
     ////////////////////////////////////////////////////////question
 var letter = null;
@@ -423,9 +435,12 @@ function start_find_letter()
   {
   letter = randlet;
   speaking("Where is letter "+letter);
+  speech.onend = function(){
   for(var xx = 0;xx<26;xx++)
   {
     document.getElementsByClassName("find_letter_b")[xx].disabled = false;
+    document.getElementsByClassName("find_letter_b")[xx].children[0].style.opacity = "100%";
+  }
   }
   }
   else{start_find_letter();}
@@ -435,6 +450,7 @@ function onc_find_letter(let)
   for(var xx = 0;xx<26;xx++)
   {
     document.getElementsByClassName("find_letter_b")[xx].disabled = true;
+    document.getElementsByClassName("find_letter_b")[xx].children[0].style.opacity = "25%";
   }
   if(let == letter)
   {
@@ -444,7 +460,7 @@ function onc_find_letter(let)
   {
     lose();
   }
-  setTimeout(function(){document.body.style.backgroundColor = "white";document.getElementById("start_find_letter_b").disabled = false;},1000);
+  speech.onend = function(){document.body.style.backgroundColor = "white";document.getElementById("start_find_letter_b").disabled = false;};
 }
 //////////////////////////////////////question
   </script>
@@ -482,28 +498,28 @@ function onc_find_letter(let)
     <button id="start_find_number_b" style="font-size: 150px;" onclick="start_find_number()">Start</button>
     <br></br>
     <br></br>
-    <button class="find_number_b" onclick="onc_find_number(0)" disabled><h class="number_0"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(1)" disabled><h class="number_1"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(2)" disabled><h class="number_2"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(3)" disabled><h class="number_3"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(4)" disabled><h class="number_4"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(5)" disabled><h class="number_5"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(6)" disabled><h class="number_6"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(7)" disabled><h class="number_7"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(8)" disabled><h class="number_8"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(9)" disabled><h class="number_9"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(10)" disabled><h class="number_10"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(0)" disabled><h class="number_0" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(1)" disabled><h class="number_1" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(2)" disabled><h class="number_2" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(3)" disabled><h class="number_3" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(4)" disabled><h class="number_4" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(5)" disabled><h class="number_5" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(6)" disabled><h class="number_6" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(7)" disabled><h class="number_7" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(8)" disabled><h class="number_8" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(9)" disabled><h class="number_9" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(10)" disabled><h class="number_10" style="opacity:25%;"></h></button>
     <br></br>
-    <button class="find_number_b" onclick="onc_find_number(11)" disabled><h class="number_11"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(12)" disabled><h class="number_12"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(13)" disabled><h class="number_13"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(14)" disabled><h class="number_14"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(15)" disabled><h class="number_15"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(16)" disabled><h class="number_16"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(17)" disabled><h class="number_17"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(18)" disabled><h class="number_18"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(19)" disabled><h class="number_19"></h></button>
-    <button class="find_number_b" onclick="onc_find_number(20)" disabled><h class="number_20"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(11)" disabled><h class="number_11" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(12)" disabled><h class="number_12" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(13)" disabled><h class="number_13" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(14)" disabled><h class="number_14" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(15)" disabled><h class="number_15" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(16)" disabled><h class="number_16" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(17)" disabled><h class="number_17" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(18)" disabled><h class="number_18" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(19)" disabled><h class="number_19" style="opacity:25%;"></h></button>
+    <button class="find_number_b" onclick="onc_find_number(20)" disabled><h class="number_20" style="opacity:25%;"></h></button>
   <style>
     button.find_number_b
     {
@@ -522,18 +538,23 @@ function start_find_number()
   {
   number = randnum;
   speaking("Where is number "+number);
-  for(var xx = 0;xx<20;xx++)
+  speech.onend = function()
+  {
+  for(var xx = 0;xx<21;xx++)
   {
     document.getElementsByClassName("find_number_b")[xx].disabled = false;
+    document.getElementsByClassName("find_number_b")[xx].children[0].style.opacity = "100%";
+  }
   }
   }
   else{start_find_number();}
 }
 function onc_find_number(num)
 {
-  for(var xx = 0;xx<20;xx++)
+  for(var xx = 0;xx<21;xx++)
   {
     document.getElementsByClassName("find_number_b")[xx].disabled = true;
+    document.getElementsByClassName("find_number_b")[xx].children[0].style.opacity = "25%";
   }
   if(num == number)
   {
@@ -543,45 +564,44 @@ function onc_find_number(num)
   {
     lose();
   }
-  setTimeout(function(){document.body.style.backgroundColor = "white";document.getElementById("start_find_number_b").disabled = false;},1000);
+  speech.onend = function(){document.body.style.backgroundColor = "white";document.getElementById("start_find_number_b").disabled = false;};
 }
 //////////////////////////////////////question
   </script>
   </div>
   <div id="math_box" disabled style="display: none;">
     <button id="start_math_b" style="font-size: 150px;" onclick="start_math()">Start</button>
-    <h id="math_q" style="font-size:100px;position: absolute;"></h>
+    <h id="math_q" style="font-size:100px;position: absolute;right: 600px;top: 100px;"></h>
     <br></br>
     <br></br>
-    <button class="math_b" onclick="onc_math(0)" disabled><h class="number_0"></h></button>
-    <button class="math_b" onclick="onc_math(1)" disabled><h class="number_1"></h></button>
-    <button class="math_b" onclick="onc_math(2)" disabled><h class="number_2"></h></button>
-    <button class="math_b" onclick="onc_math(3)" disabled><h class="number_3"></h></button>
-    <button class="math_b" onclick="onc_math(4)" disabled><h class="number_4"></h></button>
-    <button class="math_b" onclick="onc_math(5)" disabled><h class="number_5"></h></button>
-    <button class="math_b" onclick="onc_math(6)" disabled><h class="number_6"></h></button>
-    <button class="math_b" onclick="onc_math(7)" disabled><h class="number_7"></h></button>
-    <button class="math_b" onclick="onc_math(8)" disabled><h class="number_8"></h></button>
-    <button class="math_b" onclick="onc_math(9)" disabled><h class="number_9"></h></button>
-    <button class="math_b" onclick="onc_math(10)" disabled><h class="number_10"></h></button>
+    <button class="math_b" onclick="onc_math(0)" disabled><h class="number_0" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(1)" disabled><h class="number_1" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(2)" disabled><h class="number_2" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(3)" disabled><h class="number_3" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(4)" disabled><h class="number_4" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(5)" disabled><h class="number_5" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(6)" disabled><h class="number_6" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(7)" disabled><h class="number_7" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(8)" disabled><h class="number_8" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(9)" disabled><h class="number_9" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(10)" disabled><h class="number_10" style="opacity:25%;"></h></button>
     <br></br>
-    <button class="math_b" onclick="onc_math(11)" disabled><h class="number_11"></h></button>
-    <button class="math_b" onclick="onc_math(12)" disabled><h class="number_12"></h></button>
-    <button class="math_b" onclick="onc_math(13)" disabled><h class="number_13"></h></button>
-    <button class="math_b" onclick="onc_math(14)" disabled><h class="number_14"></h></button>
-    <button class="math_b" onclick="onc_math(15)" disabled><h class="number_15"></h></button>
-    <button class="math_b" onclick="onc_math(16)" disabled><h class="number_16"></h></button>
-    <button class="math_b" onclick="onc_math(17)" disabled><h class="number_17"></h></button>
-    <button class="math_b" onclick="onc_math(18)" disabled><h class="number_18"></h></button>
-    <button class="math_b" onclick="onc_math(19)" disabled><h class="number_19"></h></button>
-    <button class="math_b" onclick="onc_math(20)" disabled><h class="number_20"></h></button>
+    <button class="math_b" onclick="onc_math(11)" disabled><h class="number_11" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(12)" disabled><h class="number_12" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(13)" disabled><h class="number_13" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(14)" disabled><h class="number_14" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(15)" disabled><h class="number_15" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(16)" disabled><h class="number_16" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(17)" disabled><h class="number_17" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(18)" disabled><h class="number_18" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(19)" disabled><h class="number_19" style="opacity:25%;"></h></button>
+    <button class="math_b" onclick="onc_math(20)" disabled><h class="number_20" style="opacity:25%;"></h></button>
     <style>
         button.math_b
         {
         }
     </style>
     <script>
-      setInterval(function(){document.getElementById("math_q").style.right = window.innerWidth/2.75+"px";document.getElementById("math_q").style.top = window.innerHeight/7+"px";},500);
       var number1 = null;
       var number2 = null;
       var number3 = null;
@@ -599,6 +619,7 @@ function onc_find_number(num)
             document.getElementById("math_q").innerHTML += '<h class="number_'+number2+'"></h>';
             document.getElementById("math_q").innerHTML += '<h class="number_="></h>';
             document.getElementById("math_q").innerHTML += '<h id="number3" class="number_?"></h>';
+            load_images();
             speaking(number1+" Minus "+number2);
         }
         else
@@ -612,11 +633,15 @@ function onc_find_number(num)
             document.getElementById("math_q").innerHTML += '<h class="number_'+number2+'"></h>';
             document.getElementById("math_q").innerHTML += '<h class="number_="></h>';
             document.getElementById("math_q").innerHTML += '<h id="number3" class="number_?"></h>';
+            load_images();
             speaking(number1+"+"+number2);
         }
+        speech.onend = function(){
         for(var xx = 0;xx<21;xx++)
         {
             document.getElementsByClassName("math_b")[xx].disabled = false;
+            document.getElementsByClassName("math_b")[xx].children[0].style.opacity = "100%";
+        }
         }
       }
       function onc_math(number)
@@ -624,8 +649,10 @@ function onc_find_number(num)
         for(var xx = 0;xx<21;xx++)
         {
             document.getElementsByClassName("math_b")[xx].disabled = true;
+            document.getElementsByClassName("math_b")[xx].children[0].style.opacity = "25%";
         }
         document.getElementById("number3").innerHTML = '<h id="number3" class="number_'+number3+'"></h>';
+        load_images();
         if(number == number3)
         {
           win();
@@ -634,17 +661,16 @@ function onc_find_number(num)
         {
           lose();
         }
-        setTimeout(function(){document.body.style.backgroundColor = "white";document.getElementById("math_q").innerHTML = "";document.getElementById("start_math_b").disabled = false;},1000);
+        speech.onend = function(){document.body.style.backgroundColor = "white";document.getElementById("math_q").innerHTML = "";document.getElementById("start_math_b").disabled = false;};
       }
     </script>
   </div>
 </body>
-<div id="license" style="position: absolute;">
+<div id="license" style="position: absolute;top: 720px;">
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Learn English</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://kiavashworld.github.io/" property="cc:attributionName" rel="cc:attributionURL">kiAVASHWorld</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>. Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://kiavashworld.github.io/Learn English" rel="dct:source">https://kiavashworld.github.io/Learn English</a>.
 </div>
 <script>
-    document.getElementById("license").style.top = (window.innerHeight-document.getElementById("license").clientHeight*2.25)+"px";
-    setInterval(function(){document.getElementById("license").style.top = (window.innerHeight-document.getElementById("license").clientHeight*1.125)+"px";},500);
+    document.getElementById("license").style.top = (720-document.getElementById("license").clientHeight*2.25)+"px";
     load_images();
 </script>
 </html>
