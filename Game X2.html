@@ -1,0 +1,34 @@
+Computer: <h id="game">2</h>
+<br></br>
+<input id="inp" type="number">
+<button id="start" onclick="start()">Go</button>
+<script>
+    var x2 = 2;
+    function start()
+    {// document.getElementById("")
+        if(document.getElementById("inp").value != "")
+        {
+        document.getElementById("start").disabled = true;
+        document.getElementById("inp").disabled = true;
+        if(document.getElementById("inp").value == x2*2)
+        {
+            x2 = x2*4;
+            document.getElementById("game").innerHTML = x2;
+            document.getElementById("inp").value = "";
+            document.getElementById("start").disabled = false;
+            document.getElementById("inp").disabled = false;
+            document.getElementById("inp").select();
+        }
+        else
+        {
+            document.getElementById("game").innerHTML = "You Lose";
+            document.body.innerHTML += '<button onclick="location.reload()">Try Again</button>';
+        }
+        }
+        else
+        {
+            alert("Please Enter Number");
+        }
+    }
+    onkeydown = function(e){if(e.key == "Enter"){start()}}
+</script>
