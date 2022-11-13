@@ -1,0 +1,125 @@
+Number of rows: <input type="number" id="rows" value="10">
+Start from: <input type="number" id="start_from" value="1">
+Operation: <select id="math_operations">
+	<option value="+">+</option>
+	<option value="-">-</option>
+	<option value="*">*</option>
+	<option value="/">/</option>
+</select>
+<button onclick="start(1,[parseInt(document.getElementById('rows').value),document.getElementById('math_operations').value,parseInt(document.getElementById('start_from').value)])">Start</button>
+<canvas id="canvas" width="1000" height="1000" style="border: 2.5px solid black"/>
+<script>
+const canvas = document.getElementById('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const ctx = canvas.getContext('2d');
+
+const a = 2 * Math.PI / 6;
+const r = 25;
+var old_x = canvas.width/2;
+var old_x2 = canvas.width/2;
+var old_y = canvas.height/2;
+var old_y2 = -50;
+var rows = 10;
+var old_nums = [];
+var new_nums = [];
+var num = 1;
+var color = null;
+var start_from = 1;
+
+function start(mode,values) {
+	if(mode == 1)
+	{
+		if(values[0])
+		{
+			rows = parseInt(values[0]);
+		}
+		v0 = rows+1;
+		if(values[2])
+		{
+			start_from = parseInt(values[2]);
+		}
+		for(var i = 0;i<rows;i++)
+		{
+			old_x2 += 22.5;
+			old_x = old_x2;
+			old_y2 += 37.5;
+			old_y = old_y2;
+			v0-=1;
+			old_nums = new_nums;
+			new_nums = [];
+	for(var ii = 0;ii<v0;ii++)
+	{
+		if(ii != 0 && i != 0)
+		{
+			if(values[1] == null || values[1] == "+")
+			{
+				num = new_nums[ii-1] + old_nums[ii];
+			    new_nums[ii] = num;
+			}
+			if(values[1] == "-")
+			{
+				num = new_nums[ii-1] - old_nums[ii];
+			    new_nums[ii] = num;
+			}
+			if(values[1] == "*")
+			{
+				num = new_nums[ii-1] * old_nums[ii];
+			    new_nums[ii] = num;
+			}
+			if(values[1] == "/")
+			{
+				num = new_nums[ii-1] / old_nums[ii];
+			    new_nums[ii] = num;
+			}
+		}
+		else
+		{
+			num = start_from;
+			new_nums[ii] = num;
+		}
+		if(num == 1)
+		{
+			color = "blue";
+		}
+		else
+		{
+			if(prime(num))
+			{
+				color = "red";
+			}
+			else
+			{
+				color = "black";
+			}
+		}
+		drawHexagon(old_x-22.5,old_y+37.5,num,color);
+  }
+  }
+  }
+}
+function prime(number)
+{
+	var x, flag = true;
+		for(x = 2; x <= num - 1; x++)
+			if (num % x == 0) {
+				flag = false;
+				break;
+			}
+			return flag;
+}
+
+function drawHexagon(x, y,number,color = "black") {
+	old_x = x;
+	old_y = y;
+  ctx.beginPath();
+  for (var i = 0; i < 6; i++) {
+  	var b = (a * i) + (2 * Math.PI / 12);
+    ctx.lineTo(x + r * Math.cos(b), y + r * Math.sin(b));
+  }
+  ctx.fillStyle = color;
+  ctx.fillText(number,x-r*0.8,y+r*0.1);
+  ctx.closePath();
+  ctx.stroke();
+}
+</script>
