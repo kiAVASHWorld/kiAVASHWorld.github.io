@@ -28,6 +28,11 @@ var color = null;
 var start_from = 1;
 
 function start(mode,values) {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	old_x = canvas.width/2;
+	old_x2 = canvas.width/2;
+	old_y = canvas.height/2;
+	old_y2 = -50;
 	if(mode == 1)
 	{
 		if(values[0])
@@ -118,7 +123,8 @@ function drawHexagon(x, y,number,color = "black") {
     ctx.lineTo(x + r * Math.cos(b), y + r * Math.sin(b));
   }
   ctx.fillStyle = color;
-  ctx.fillText(number,x-r*0.8,y+r*0.1);
+  ctx.textAlign = "center";
+  ctx.fillText(number,x,y);
   ctx.closePath();
   ctx.stroke();
 }
