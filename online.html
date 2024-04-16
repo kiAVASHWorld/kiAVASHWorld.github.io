@@ -21,7 +21,6 @@ function getMousePos(canvas, evt) {
   // The tick function takes a map of Player -> Input and
   // simulates the game forward. Think of it like making
   // a local multiplayer game with multiple controllers.
-alert(player.getID())
   tick(playerInputs) {
     for (const [player, input] of playerInputs.entries()) {
       // Generate player velocity from input keys.
