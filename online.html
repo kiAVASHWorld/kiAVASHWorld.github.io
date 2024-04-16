@@ -1,7 +1,6 @@
 <body></body>
 <script src="https://unpkg.com/netplayjs@0.4.1/dist/netplay.js"></script>
 <script>
-var myplayer = 10;
 var mycanvas = 0;
 class SimpleGame extends netplayjs.Game {
   // In the constructor, we initialize the state of our game.
@@ -26,7 +25,6 @@ function getMousePos(canvas, evt) {
     for (const [player, input] of playerInputs.entries()) {
       // Generate player velocity from input keys.
       const vel = input.onmousedown();
-myplayer = player.getID();
 
       // Apply the velocity to the appropriate player.
 if (mycanvas != 0){
