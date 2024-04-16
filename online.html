@@ -25,7 +25,7 @@ function getMousePos(canvas, evt) {
   tick(playerInputs) {
     for (const [player, input] of playerInputs.entries()) {
       // Generate player velocity from input keys.
-      const vel = input.mousedown();
+      const vel = input.onmousedown();
 myplayer = player.getID();
 
       // Apply the velocity to the appropriate player.
