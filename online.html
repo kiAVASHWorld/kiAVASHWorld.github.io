@@ -1,7 +1,26 @@
-<body></body>
+<body>
+<button id="btn" ontouchstart="val.x=1" ontouchend="val.x=0" class="unselect">right</button>
+<button id="btn" ontouchstart="val.x=-1" ontouchend="val.x=0" class="unselect">left</button>
+<button id="btn" ontouchstart="val.y=1" ontouchend="val.y=0" class="unselect">up</button>
+<button id="btn" ontouchstart="val.y=-1" ontouchend="val.y=0" class="unselect">down</button>
+</body>
+<style>
+.unselect {
+        user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+}
+#btn{
+	font-size:30px;
+}
+</style>
 <script src="https://unpkg.com/netplayjs@0.4.1/dist/netplay.js"></script>
 <script>
+var myid = 10;
 var mycanvas = 0;
+var val = {x:0,y:0};
 class SimpleGame extends netplayjs.Game {
   // In the constructor, we initialize the state of our game.
   constructor() {
@@ -10,32 +29,25 @@ class SimpleGame extends netplayjs.Game {
     this.aPos = { x: 100, y: 150 };
     this.bPos = { x: 500, y: 150 };
   }
-function getMousePos(canvas, evt) {
-  var rect = canvas.getBoundingClientRect();
-  return {
-    x: evt.clientX - rect.left,
-    y: evt.clientY - rect.top
-  };
-}
 
   // The tick function takes a map of Player -> Input and
   // simulates the game forward. Think of it like making
   // a local multiplayer game with multiple controllers.
-  tick(playerInputs) {
-    for (const [player, input] of playerInputs.entries()) {
+  tick(Player) {
+for (const [player] of Player) {
+	myid = val.x+" "+val.y+" "+player.getID();
+if (player.getID()== 0) {
+        this.aPos.x += val.x;
+        this.aPos.y += val.y;
+      } else if (player.getID()== 1) {
+        this.bPos.x += val.x;
+        this.bPos.y += val.y;
+      }
       // Generate player velocity from input keys.
 
       // Apply the velocity to the appropriate player.
-if (mycanvas != 0){
-      if (player.getID() == 0) {
-        this.aPos.x = getMousePos(mycanvas).x;
-        this.aPos.y = getMousePos(mycanvas).y;
-      } else if (player.getID() == 1) {
-        this.bPos.x = getMousePos(mycanvas).x;
-        this.bPos.y = getMousePos(mycanvas).y;
-      }}
-    }
-  }
+      
+    }}
 
   // Normally, we have to implement a serialize / deserialize function
   // for our state. However, there is an autoserializer that can handle
@@ -45,7 +57,7 @@ if (mycanvas != 0){
 
   // Draw the state of our game onto a canvas.
   draw(canvas) {
-mycanvas = canvas;
+  	mycanvas=canvas;
     const ctx = canvas.getContext("2d");
 
     // Fill with black.
@@ -57,6 +69,9 @@ mycanvas = canvas;
     ctx.fillRect(this.aPos.x - 5, this.aPos.y - 5, 10, 10);
     ctx.fillStyle = "blue";
     ctx.fillRect(this.bPos.x - 5, this.bPos.y - 5, 10, 10);
+    
+    ctx.font = "48px serif";
+  ctx.fillText("id: "+myid, 10, 50);
   }
 }
 
