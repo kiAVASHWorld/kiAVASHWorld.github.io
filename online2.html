@@ -17,7 +17,7 @@ class SimpleGame extends netplayjs.Game {
     for (const [player, input] of playerInputs.entries()) {
       // Generate player velocity from input keys.
       var vel = input.arrowKeys();
-console.warn(player);
+console.warn(input);
 
       // Apply the velocity to the appropriate player.
       if (player.getID() == 0) {
