@@ -46,7 +46,7 @@ class SimpleGame extends netplayjs.Game {
       }
 	myid = val.x+" "+val.y+" "+playerid;
 	console.warn(player)
-var val2 = val + input.arrowKeys();
+var val2 = {x:val.x + input.arrowKeys().x,y:val.y + input.arrowKeys().y};
 if (playerid== 0) {
         this.aPos.x += val2.x;
         this.aPos.y += val2.y;
