@@ -16,16 +16,19 @@ class SimpleGame extends netplayjs.Game {
   tick(playerInputs) {
     for (const [player, input] of playerInputs.entries()) {
       // Generate player velocity from input keys.
-      var vel = input.arrowKeys();
-console.warn(input);
+      const vel = input.arrowKeys();
+      if(input.mousePosition){
+      console.warn(input.mousePosition.x);}
 
       // Apply the velocity to the appropriate player.
       if (player.getID() == 0) {
-        this.aPos.x += vel.x * 5;
-        this.aPos.y -= vel.y * 5;
+      if(input.mousePosition){
+        this.aPos.x = input.mousePosition.x;
+        this.aPos.y = input.mousePosition.y;}
       } else if (player.getID() == 1) {
-        this.bPos.x += vel.x * 5;
-        this.bPos.y -= vel.y * 5;
+      	if(input.mousePosition){
+        this.bPos.x = input.mousePosition.x;
+        this.bPos.y = input.mousePosition.y;}
       }
     }
   }
