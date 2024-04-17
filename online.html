@@ -33,8 +33,8 @@ class SimpleGame extends netplayjs.Game {
   // The tick function takes a map of Player -> Input and
   // simulates the game forward. Think of it like making
   // a local multiplayer game with multiple controllers.
-  tick(Player) {
-    for (const [player] of Player) {
+  tick(playerInputs) {
+    for (const [player, input] of playerInputs.entries()) {
     	var local = player.isLocalPlayer();
       var host = player.isServer();
       var playerid = 10;
