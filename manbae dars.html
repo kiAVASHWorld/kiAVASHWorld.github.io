@@ -1,0 +1,194 @@
+<title>منبع درس</title>
+<link rel="icon" href="logo manbae dars.png">
+<body style="margin: 0;" dir="rtl">
+    <div id="page_home" class="page"><!-- خانه -->
+        0
+    </div><!-- پایان -->
+    <div id="page_yekom" class="page"><!-- پایه یکم -->
+        1
+    </div><!-- پایان -->
+    <div id="page_dovom" class="page"><!-- پایه دوم -->
+        2
+    </div><!-- پایان -->
+    <div id="page_sevom" class="page"><!-- پایه سوم -->
+        3
+    </div><!-- پایان -->
+    <div id="page_chaharom" class="page"><!-- پایه چهارم -->
+        4
+    </div><!-- پایان -->
+    <div id="page_panjom" class="page"><!-- پایه پنجم -->
+        5
+    </div><!-- پایان -->
+    <div id="page_sheshom" class="page"><!-- پایه ششم -->
+        6
+    </div><!-- پایان -->
+    <div id="page_haftom" class="page"><!-- پایه هفتم -->
+        7
+    </div><!-- پایان -->
+    <div id="page_hashtom" class="page"><!-- پایه هشتم -->
+        8
+    </div><!-- پایان -->
+    <div id="page_nohom" class="page"><!-- پایه نهم -->
+        9
+    </div><!-- پایان -->
+    <div id="page_dahom" class="page"><!-- پایه دهم -->
+        10
+    </div><!-- پایان -->
+    <div id="page_yazdahom" class="page"><!-- پایه یازدهم -->
+        11
+    </div><!-- پایان -->
+    <div id="page_davazdahom" class="page"><!-- پایه دوازدهم -->
+        12
+    </div><!-- پایان -->
+    <div id="page_calculator" class="page"><!-- ماشین حساب -->
+        13
+    </div><!-- پایان -->
+    <div id="page_graph" class="page"><!-- نمودار -->
+        14
+    </div><!-- پایان -->
+    <div class="titlebar" id="title_bar" style="color:#f2f2f2;font-family: koodak;font-size: 150%;background-color: rgb(70, 70, 70);position:absolute;width:100%;">
+        <h style="padding-right: 5px;" title="پایه های دبستان">دبستان:</h>
+        <a name="yekom" title="پایه یکم" href="#yekom">یکم</a>
+        <a name="dovom" title="پایه دوم" href="#dovom">دوم</a>
+        <a name="sevom" title="پایه سوم" href="#sevom">سوم</a>
+        <a name="chaharom" title="پایه چهارم" href="#chaharom">چهارم</a>
+        <a name="panjom" title="پایه پنجم" href="#panjom">پنجم</a>
+        <a name="sheshom" title="پایه ششم" href="#sheshom">ششم</a>
+        <h title="پایه های متوسطه">متوسطه:</h>
+        <a name="haftom" title="پایه هفتم" href="#haftom">هفتم</a>
+        <a name="hashtom" title="پایه هشتم" href="#hashtom">هشتم</a>
+        <a name="nohom" title="پایه نهم" href="#nohom">نهم</a>
+        <a name="dahom" title="پایه دهم" href="#dahom">دهم</a>
+        <a name="yazdahom" title="پایه یازدهم" href="#yazdahom">یازدهم</a>
+        <a name="davazdahom" title="پایه دوازدهم" href="#davazdahom">دوازدهم</a>
+        <h title="ابزار های کاربردی">کاربردی:</h>
+        <a name="calculator" title="ماشین حساب" href="#calculator">ماشین حساب</a>
+        <a name="graph" title="ماشین حساب نمودار" href="#graph">نمودار</a>
+
+        <ha id="hamburger" class="icon" onclick="myFunction()"><a id="home_btn2" name="home" title="منبع درس" href="" style="height: 100%;position: absolute;right: 98.5%;top: 0;display: block;"><img src="logo manbae dars.png" style="height: 100%;position: absolute;left: 0;top: 0;"><h style="display: none;">منبع درس</h></a>☰</ha>
+        
+        <a id="home_btn" name="home" title="منبع درس" href=""><img id="logo" src="logo manbae dars.png" style="height: 100%;position: absolute;left: 0;top: 0;"><h style="display: none;">منبع درس</h></a>
+    </div>
+    
+</body>
+<script>
+for(var i = 0; i < document.getElementById("title_bar").querySelectorAll("a").length; i++) {
+    document.getElementById("title_bar").querySelectorAll("a")[i].addEventListener("click", (event) => {
+        set_active_a();
+    });}
+function set_active_a(){
+    setTimeout(function(){
+        for(var i = 0; i < document.getElementById("title_bar").querySelectorAll("a").length; i++) {
+            if(document.getElementById("title_bar").querySelectorAll("a")[i].href == window.location.href) {
+                document.getElementById("title_bar").querySelectorAll("a")[i].className = "active";
+                var id_text = "page_"+document.getElementById("title_bar").querySelectorAll("a")[i].name;
+                document.getElementById(id_text).style.display = "block";
+                document.title = document.getElementById("title_bar").querySelectorAll("a")[i].title;
+            }
+            else{
+                document.getElementById("title_bar").querySelectorAll("a")[i].className = "";
+                var id_text = "page_"+document.getElementById("title_bar").querySelectorAll("a")[i].name;
+                document.getElementById(id_text).style.display = "none";
+            }
+        }
+    },1)
+}
+set_active_a()
+function myFunction() {
+    if(document.getElementById("home_btn2").style.display == "block"){
+        document.getElementById("home_btn2").style.display = "none";
+    }
+    else{
+        document.getElementById("home_btn2").style.display = "block";
+    }
+    var x = document.getElementById("title_bar");
+    if (x.className === "titlebar") {
+        x.className += " responsive";
+    }
+    else {
+        x.className = "titlebar";
+    }
+}
+</script>
+<style>
+    #home_btn{
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .page{
+        display: none;
+        position:absolute;
+        width: 100%;
+        height: 93.75%;
+        background-color: darkblue;
+        top: 6.25%;
+        font-size: 100px;
+    }
+    .titlebar {
+    overflow: hidden;
+    background-color: #333;
+    }
+
+    .titlebar a {
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-size: 75%;
+    border-radius: 1000px;
+    border: 0px;
+    padding: 0px 5px;
+    }
+
+    .titlebar h {
+    color: #f2f2f2;
+    text-align: center;
+    }
+
+    .titlebar a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+
+    .titlebar a.active {
+    background-color: #04AA6D;
+    color: white;
+    }
+    @font-face {
+    font-family: 'nazanin';
+    src:url('B Nazanin.ttf') format('truetype');
+    font-family: 'koodak';
+    src:url('B Koodak Bold.ttf') format('truetype');
+    } 
+    @media screen and (max-width: 975px) {
+    .titlebar a:not(:first-child) {display: none;}
+    .titlebar h {display: none;}
+    .titlebar ha.icon {
+    float: right;
+    display: block;
+    }
+    }
+
+    @media screen and (max-width: 975px) {
+    .titlebar.responsive {position: relative;}
+    .titlebar.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    }
+    .titlebar.responsive a {
+    float: none;
+    display: block;
+    }
+    .titlebar.responsive h {
+    display: block;
+    }
+    #home_btn{height: 7.5%;}
+    }
+    .titlebar .icon {
+    display: none;
+    font-size: 100%;
+    padding-right: 5px;
+    }
+</style>
