@@ -65,14 +65,14 @@
         <a name="calculator" title="ماشین حساب" href="#calculator">ماشین حساب</a>
         <a name="graph" title="ماشین حساب نمودار" href="#graph">نمودار</a>
 
-        <ha id="hamburger" class="icon" onclick="myFunction()"><a id="home_btn2" name="home" title="منبع درس" href="" style="height: 100%;position: absolute;right: 98.5%;top: 0;display: block;"><img src="logo manbae dars.png" style="height: 100%;position: absolute;left: 0;top: 0;"><h style="display: none;">منبع درس</h></a>☰</ha>
+        <ha id="hamburger" class="icon" onclick="myFunction()"><a id="home_btn2" name="home" title="منبع درس" href="" style="height: 100%;position: absolute;right: 98.5%;top: 0;display: block;"><img src="logo manbae dars.png" style="height: 100%;position: absolute;left: 0;top: 0;"><hhh style="display: none;">منبع درس</hhh></a>☰</ha>
         
-        <a id="home_btn" name="home" title="منبع درس" href=""><img id="logo" src="logo manbae dars.png" style="height: 100%;position: absolute;left: 0;top: 0;"><h style="display: none;">منبع درس</h></a>
+        <a id="home_btn" name="home" title="منبع درس" href=""><img id="logo" src="logo manbae dars.png" style="height: 100%;position: absolute;left: 0;top: 0;"><hhh style="display: none;">منبع درس</hhh></a>
     </div>
     
 </body>
 <script>
-document.getElementById("title_bar").style.minHeight = (window.screen.height-(window.screen.height/100*94)).toString()+"px"
+document.getElementById("title_bar").style.minHeight = (window.screen.height-(window.screen.height/100*94)).toString()+"px";
 for(var i = 0; i < document.getElementById("title_bar").querySelectorAll("a").length; i++) {
     document.getElementById("title_bar").querySelectorAll("a")[i].addEventListener("click", (event) => {
         set_active_a();
@@ -110,6 +110,62 @@ function myFunction() {
         x.className = "titlebar";
     }
 }
+setInterval(function(){
+    if(document.body.clientWidth < 1000){
+        if(document.getElementsByClassName("titlebar")[0] != null){
+        var child_a = document.getElementsByClassName("titlebar")[0].getElementsByTagName("a");
+        for(var i = 0;i<child_a.length;i++){
+            child_a[i].style.display = "none";
+            child_a[i].style.position = "absolute";
+        }
+        var child_h = document.getElementsByClassName("titlebar")[0].getElementsByTagName("h");
+        for(var i = 0;i<child_h.length;i++){
+            child_h[i].style.display = "none";
+            child_h[i].style.position = "absolute";
+        }
+        document.getElementById("home_btn").style.height = "100%";}
+        if(document.getElementsByClassName("titlebar responsive")[0] != null){
+        var child_a = document.getElementsByClassName("titlebar responsive")[0].getElementsByTagName("a");
+        for(var i = 0;i<child_a.length;i++){
+            child_a[i].style.display = "block";
+            child_a[i].style.position = "relative";
+        }
+        var child_h = document.getElementsByClassName("titlebar responsive")[0].getElementsByTagName("h");
+        for(var i = 0;i<child_h.length;i++){
+            child_h[i].style.display = "block";
+            child_h[i].style.position = "relative";
+        }
+        document.getElementById("home_btn").style.height = "8.25%";}
+        document.getElementById("title_bar").style.position = "relative";
+        document.getElementById("title_bar").style.height = "";
+        document.getElementById("title_bar").style.minHeight = "6.25%";
+        document.getElementById("home_btn").style.position = "absolute";
+        document.getElementById("home_btn").style.display = "block";
+        document.getElementById("hamburger").style.display = "block";
+        document.getElementById("hamburger").style.top = "0";
+        document.getElementById("hamburger").style.right = "0";
+        document.getElementById("hamburger").style.position = "absolute";
+    }
+    if(document.body.clientWidth >= 1000){
+        var child_a = document.getElementById("title_bar").getElementsByTagName("a");
+        for(var i = 0;i<child_a.length;i++){
+            child_a[i].style.display = "";
+            child_a[i].style.position = "relative";
+        }
+        var child_h = document.getElementById("title_bar").getElementsByTagName("h");
+        for(var i = 0;i<child_h.length;i++){
+            child_h[i].style.display = "";
+            child_h[i].style.position = "relative";
+        }
+        document.getElementById("title_bar").style.position = "absolute";
+        document.getElementById("hamburger").style.display = "none";
+        document.getElementById("title_bar").style.height = "6.25%";
+        document.getElementById("home_btn").style.height = "100%";
+        document.getElementById("home_btn").style.left = "0";
+        document.getElementById("home_btn").style.position = "absolute";
+        document.getElementById("title_bar").style.minHeight = (window.screen.height-(window.screen.height/100*94)).toString()+"px";
+    }
+},0)
 </script>
 <style>
     #home_btn{
@@ -162,7 +218,7 @@ function myFunction() {
     font-family: 'koodak';
     src:url('B Koodak Bold.ttf') format('truetype');
     } 
-    @media screen and (max-width: 975px) {
+    /* @media screen and (max-width: 1000px) {
     .titlebar a:not(:first-child) {display: none;}
     .titlebar h {display: none;}
     .titlebar ha.icon {
@@ -171,7 +227,7 @@ function myFunction() {
     }
     }
 
-    @media screen and (max-width: 975px) {
+    @media screen and (max-width: 1000px) {
     .titlebar.responsive {position: relative;}
     .titlebar.responsive .icon {
     position: absolute;
@@ -191,5 +247,5 @@ function myFunction() {
     display: none;
     font-size: 100%;
     padding-right: 5px;
-    }
+    } */
 </style>
