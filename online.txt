@@ -1,0 +1,198 @@
+<body></body>
+<script src="https://unpkg.com/netplayjs@0.4.1/dist/netplay.js"></script>
+<script>
+class SimpleGame extends netplayjs.Game {
+  // In the constructor, we initialize the state of our game.
+  constructor() {
+    super();
+    // Initialize our player positions.
+    this.xo = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80];
+    this.xScore = 0;
+    this.oScore = 0;
+    this.rect = [];
+    this.aPos = { x: 100, y: 150 };
+    this.bPos = { x: 500, y: 150 };
+    for(var i = 0;i<81;i++)
+{
+var ii = (i-(27*Math.floor(i/27)));
+var iii = Math.floor(ii/9);
+var iiii = (ii-(3*Math.floor(ii/3)));
+var iiiii = (ii-(9*Math.floor(ii/9)))
+var iiiiii = Math.floor(iiiii/3);
+var iiiiiii = Math.floor(i/27);
+console.warn([i,ii,iii,iiii,iiiii,iiiiii,iiiiiii]);
+var x = 8+70*iiii+214*iii;
+var y = 8+70*iiiiii+214*iiiiiii;
+var w = 68;
+var h = 68;
+this.rect.push({x:x,y:y,width:w,height:h});
+}
+function Playbutton(ctx,rect,text, lWidth, fillColor, lineColor) {
+  ctx.font = '70px Arial';
+  ctx.fillStyle = '#000000';
+if(text =="X")
+{
+ctx.fillStyle = '#EE0000';
+}
+else if(text =="O")
+{
+ctx.fillStyle = '#0000EE';
+}
+else
+{
+text = "";
+}
+
+  ctx.fillText(text, rect.x+rect.width/10, rect.y+rect.height*(9/10) );
+}
+
+function isInside(pos, rect) {
+  return pos.x > rect.x && pos.x < rect.x + rect.width && pos.y < rect.y + rect.height && pos.y > rect.y
+}
+
+  }
+
+  // The tick function takes a map of Player -> Input and
+  // simulates the game forward. Think of it like making
+  // a local multiplayer game with multiple controllers.
+  tick(playerInputs) {
+    for (const [player, input] of playerInputs.entries()) {
+     var mousePos = 0;
+if(input.mousePosition){
+mousePos = input.mousePosition;}
+     
+this.xScore = 0;
+this.oScore = 0;
+for(var i = 0;i<9;i++){
+if(xo[0+i*9] == xo[1+i*9]&xo[1+i*9] == xo[2+i*9]){
+console.log("player "+xo[0+i*9]+" win!");
+if(xo[0+i*9] == "X"){xScore++;}
+if(xo[0+i*9] == "O"){oScore++;}
+}if(xo[3+i*9] == xo[4+i*9]&xo[4+i*9] == xo[5+i*9]){
+console.log("player "+xo[3+i*9]+" win!");
+if(xo[3+i*9] == "X"){xScore++;}
+if(xo[3+i*9] == "O"){oScore++;}
+}if(xo[6+i*9] == xo[7+i*9]&xo[7+i*9] == xo[8+i*9]){
+console.log("player "+xo[6+i*9]+" win!");
+if(xo[6+i*9] == "X"){xScore++;}
+if(xo[6+i*9] == "O"){oScore++;}
+}if(xo[0+i*9] == xo[3+i*9]&xo[3+i*9] == xo[6+i*9]){
+console.log("player "+xo[0+i*9]+" win!");
+if(xo[3+i*9] == "X"){xScore++;}
+if(xo[3+i*9] == "O"){oScore++;}
+}if(xo[1+i*9] == xo[4+i*9]&xo[4+i*9] == xo[7+i*9]){
+console.log("player "+xo[1+i*9]+" win!");
+if(xo[4+i*9] == "X"){xScore++;}
+if(xo[4+i*9] == "O"){oScore++;}
+}if(xo[2+i*9] == xo[5+i*9]&xo[5+i*9] == xo[8+i*9]){
+console.log("player "+xo[2+i*9]+" win!");
+if(xo[5+i*9] == "X"){xScore++;}
+if(xo[5+i*9] == "O"){oScore++;}
+}if(xo[0+i*9] == xo[4+i*9]&xo[4+i*9] == xo[8+i*9]){
+console.log("player "+xo[0+i*9]+" win!");
+if(xo[4+i*9] == "X"){xScore++;}
+if(xo[4+i*9] == "O"){oScore++;}
+}if(xo[2+i*9] == xo[4+i*9]&xo[4+i*9] == xo[6+i*9]){
+console.log("player "+xo[2+i*9]+" win!");
+if(xo[4+i*9] == "X"){xScore++;}
+if(xo[4+i*9] == "O"){oScore++;}
+}
+}
+     window.addEventListener('click', function(evt) {
+for(var i = 0;i<81;i++)
+{
+  if (isInside(mousePos, rect[i])) {
+    if(player.getID() == 0){
+xo[i] = "X";
+}
+else if(player.getID() == 1){
+xo[i] = "O";
+}
+  }
+}
+}, false);
+if (player.getID() == 0) {
+      	
+      if(input.mousePosition){
+        this.aPos.x = input.mousePosition.x;
+        this.aPos.y = input.mousePosition.y;}
+      } else if (player.getID() == 1) {
+      	if(input.mousePosition){
+        this.bPos.x = input.mousePosition.x;
+        this.bPos.y = input.mousePosition.y;}
+      }
+    }
+  }
+
+  // Normally, we have to implement a serialize / deserialize function
+  // for our state. However, there is an autoserializer that can handle
+  // simple states for us. We don't need to do anything here!
+  // serialize() {}
+  // deserialize(value) {}
+
+  // Draw the state of our game onto a canvas.
+  draw(canvas) {
+    const ctx = canvas.getContext("2d");
+
+    // Fill with black.
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw squares for the players.
+    ctx.fillStyle = "red";
+    ctx.fillRect(this.aPos.x - 5, this.aPos.y - 5, 10, 10);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(this.bPos.x - 5, this.bPos.y - 5, 10, 10);
+    
+    for(var i = 0;i<81;i++)
+{
+Playbutton(ctx,rect[i],xo[i]);
+}
+ctx.lineWidth = 2;
+ctx.strokeStyle = "#000000";
+for (var i = 1;i<9;i++){
+ctx.beginPath();
+ctx.moveTo(630*(i/9)+1*(i-1)+8, 16);
+ctx.lineTo(630*(i/9)+1*(i-1)+8, 637);
+ctx.stroke();}
+for (var i = 1;i<9;i++){
+ctx.beginPath();
+ctx.moveTo(16, 630*(i/9)+1*(i-1)+8);
+ctx.lineTo(637, 630*(i/9)+1*(i-1)+8);
+ctx.stroke();}
+ctx.lineWidth = 16;
+ctx.strokeStyle = "#FFFFFF";
+for (var i = 1;i<3;i++){
+ctx.beginPath();
+ctx.moveTo(630*(i/3)+1+4*(i-1)+8, 16);
+ctx.lineTo(630*(i/3)+1+4*(i-1)+8, 637);
+ctx.stroke();}
+for (var i = 1;i<3;i++){
+ctx.beginPath();
+ctx.moveTo(16, 630*(i/3)+1+4*(i-1)+8);
+ctx.lineTo(637, 630*(i/3)+1+4*(i-1)+8);
+ctx.stroke();}
+ctx.lineWidth = 6;
+ctx.strokeStyle = "#000000";
+for (var i = 1;i<3;i++){
+ctx.beginPath();
+ctx.moveTo(630*(i/3)+1+4*(i-1)+8, 16);
+ctx.lineTo(630*(i/3)+1+4*(i-1)+8, 637);
+ctx.stroke();}
+for (var i = 1;i<3;i++){
+ctx.beginPath();
+ctx.moveTo(16, 630*(i/3)+1+4*(i-1)+8);
+ctx.lineTo(637, 630*(i/3)+1+4*(i-1)+8);
+ctx.stroke();}
+
+ctx.strokeStyle = "#00EE00";
+  }
+}
+
+SimpleGame.timestep = 1000 / 60; // Our game runs at 60 FPS
+SimpleGame.canvasSize = { width: 653, height: 653 };
+
+// Because our game can be easily rewound, we will use Rollback netcode
+// If your game cannot be rewound, you should use LockstepWrapper instead.
+new netplayjs.RollbackWrapper(SimpleGame).start();
+</script>
