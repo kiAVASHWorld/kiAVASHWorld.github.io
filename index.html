@@ -4,7 +4,7 @@
 <h1 style="text-align:center;">Hi Welcome To kiAVASHWorld</h1>
 <h3>Start your journey at kiAVASHWorld.</h3>
 <h2>Choose your destination on kiAVASHWorld.</h2>
-<div style="position:absolute;" id="go_to"><button class="go_to" id="learn_english" onclick="window.open('https://kiavashworld.github.io/Learn English','_self')">Learn English</button><br></br><button class="go_to" id="Game_X2" onclick="window.open('https://kiavashworld.github.io/Game X2','_self')">Game X2</button><br></br><button class="go_to" id="Pascal's Triangle" onclick="window.open(`https://kiavashworld.github.io/Pascal's Triangle`,'_self')">Pascal's Triangle</button></div>
+<div style="position:absolute;" id="go_to"><button class="go_to" id="learn_english" onclick="window.open('https://kiavashworld.github.io/Learn English','_self')">Learn English</button><br></br><button class="go_to" id="Game_X2" onclick="window.open('https://kiavashworld.github.io/Game X2','_self')">Game X2</button><br></br><button class="go_to" id="Pascal's Triangle" onclick="window.open(`https://kiavashworld.github.io/Pascal's Triangle`,'_self')">Pascal's Triangle</button><br></br><button class="go_to" id="Super kiAVASHWorld" onclick="window.open(`https://kiavashworld.github.io/Super kiAVASHWorld`,'_self')">Super kiAVASHWorld</button></div>
 <style>
     .go_to
     {
@@ -14,10 +14,10 @@
     }
 </style>
 <script>
-    document.getElementById("go_to").style.top = (window.innerHeight/2-document.getElementById("go_to").scrollHeight)+"px";
-    document.getElementById("go_to").style.right = (window.innerWidth/2-document.getElementById("go_to").scrollWidth/2)+"px";
+    document.getElementById("go_to").style.top = (document.body.clientHeight/2-document.getElementById("go_to").clientHeight/2)+"px";
+    document.getElementById("go_to").style.right = (document.body.clientWidth/2-document.getElementById("go_to").clientWidth/2)+"px";
     setInterval(function(){
-            document.getElementById("go_to").style.top = (window.innerHeight/2-document.getElementById("go_to").scrollHeight)+"px";
-            document.getElementById("go_to").style.right = (window.innerWidth/2-document.getElementById("go_to").scrollWidth/2)+"px";
+        document.getElementById("go_to").style.top = (document.body.clientHeight/2-document.getElementById("go_to").clientHeight/2)+"px";
+        document.getElementById("go_to").style.right = (document.body.clientWidth/2-document.getElementById("go_to").clientWidth/2)+"px";
     },500)
 </script>
