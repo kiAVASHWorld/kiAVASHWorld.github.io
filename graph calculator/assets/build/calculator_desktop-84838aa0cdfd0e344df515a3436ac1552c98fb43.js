@@ -270,7 +270,6 @@ account-shell-text-art-contest-success-paragraph-someone-else = If you'd like to
 account-shell-text-art-contest-view-or-update-submission = View or change your submission
 account-shell-text-art-contest-view-submission = View your submission
 account-shell-text-art-contest-your-2d-submission = View your graphing calculator submission
-account-shell-text-art-contest-your-3d-submission = View your 3D submission
 account-shell-text-art-contest-your-geometry-submission = View your geometry submission
 account-shell-text-artcontest-ineligible = <1><2>Based on the provided age, we aren\u2019t able to accept this graph submission this year.</2><3>Keep up the awesome graphing! There will be new contests every year.</3></1>
 account-shell-text-artcontest-someone-else = <1><2>Based on your age and location, you need a teacher, parent, or guardian over the age of 18 to submit your graph for you.</2><3>Here is the link to your graph: </3><graphlink/><4>Please share it with one of them and have them submit it at <5>kiavash.com/art</5>.</4></1>
@@ -591,7 +590,6 @@ shared-calculator-error-recursion-wrong-arity =
     }
 shared-calculator-error-regression-recursion = Recursive functions may not be used inside regressions.
 shared-calculator-error-regression-type-error = Cannot regress { $symbol1 } against { $symbol2 }.
-shared-calculator-error-regressions-unsupported = This calculator does not support regressions.
 shared-calculator-error-required-arguments-area = Function '{ $symbol }' requires a polygon.
 shared-calculator-error-required-arguments-circle = Function 'circle' requires a center point and another point, segment, or radius value.
 shared-calculator-error-required-arguments-coterminal = Function '{ $symbol }' requires an angle.
