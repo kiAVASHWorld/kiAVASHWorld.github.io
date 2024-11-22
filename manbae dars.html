@@ -22,12 +22,22 @@
         <a href="#graph"><button style="top: 40%;right: 75%;min-width: 10%;">نمودار</button></a>
     </div><!-- پایان -->
     <div id="page_yekom" class="page"><!-- پایه یکم -->
-        <h style="top: 0;right: 0;font-size: 90%;">کتاب های درسی یکم:</h>
-        <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C101.pdf"><button style="top:15%;right:0;font-size: 62.5%;">آموزش قرآن</button></a>
-        <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C103.pdf"><button style="top:30%;right:0;font-size: 62.5%;">فارسی</button></a>
-        <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C104.pdf"><button style="top:45%;right:0;font-size: 62.5%;">نگارش فارسی</button></a>
-        <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C105.pdf"><button style="top:60%;right:0;font-size: 62.5%;">ریاضی</button></a>
-        <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C106.pdf"><button style="top:75%;right:0;font-size: 62.5%;">علوم تجربی</button></a>
+        <div class="desktop" style="display:block;">
+            <h style="top: 0;right: 0;font-size: 90%;">کتاب های درسی یکم:</h>
+            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C101.pdf"><button style="top:15%;right:0;font-size: 62.5%;">آموزش قرآن</button></a>
+            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C103.pdf"><button style="top:30%;right:0;font-size: 62.5%;">فارسی</button></a>
+            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C104.pdf"><button style="top:45%;right:0;font-size: 62.5%;">نگارش فارسی</button></a>
+            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C105.pdf"><button style="top:60%;right:0;font-size: 62.5%;">ریاضی</button></a>
+            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C106.pdf"><button style="top:75%;right:0;font-size: 62.5%;">علوم تجربی</button></a>
+        </div>
+        <div class="mobile" style="display:none;">
+            <h style="top: 0;right: 20%;font-size: 150%;">کتاب های درسی یکم:</h>
+            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C101.pdf"><button style="top:12.5%;font-size: 100%;">آموزش قرآن</button></a>
+            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C103.pdf"><button style="top:22.5%;font-size: 100%;">فارسی</button></a>
+            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C104.pdf"><button style="top:32.5%;font-size: 100%;">نگارش فارسی</button></a>
+            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C105.pdf"><button style="top:42.5%;font-size: 100%;">ریاضی</button></a>
+            <a href="http://chap.sch.ir/sites/default/files/lbooks/1403-1404/8/C106.pdf"><button style="top:52.5%;font-size: 100%;">علوم تجربی</button></a>
+        </div>
     </div><!-- پایان -->
     <div id="page_dovom" class="page"><!-- پایه دوم -->
         <h style="top: 0;right: 0;font-size: 90%;">کتاب های درسی دوم:</h>
@@ -366,6 +376,7 @@
 
 </body>
 <script>
+var platform = "desktop";
 function set_active_a(){
     setTimeout(function(){
         for(var i = 0; i < document.getElementById("title_bar").querySelectorAll("a").length; i++) {
@@ -400,14 +411,47 @@ function myFunction() {
     }
 }
 setInterval(function(){
-    var fontSizeW = document.body.clientWidth/1366*16;
-    var fontSizeH = document.body.clientHeight/657*16;
-
-    if(fontSizeH<fontSizeW){
-        document.body.style.fontSize = fontSizeH;
+    var div_desktop = document.getElementsByClassName("desktop");
+    var div_mobile = document.getElementsByClassName("mobile");
+    if(document.body.clientWidth >= document.body.clientHeight){
+        platform = "desktop";
+        for(var i=0;i<div_desktop.length;i++){
+            div_desktop[i].style.display = "block";
+        }
+        for(var i=0;i<div_mobile.length;i++){
+            div_mobile[i].style.display = "none";
+        }
     }
     else{
-        document.body.style.fontSize = fontSizeW;
+        platform = "mobile";
+        for(var i=0;i<div_desktop.length;i++){
+            div_desktop[i].style.display = "none";
+        }
+        for(var i=0;i<div_mobile.length;i++){
+            div_mobile[i].style.display = "block";
+        }
+    }
+    if(platform == "desktop"){
+        var fontSizeW = document.body.clientWidth/1366*16;
+        var fontSizeH = document.body.clientHeight/657*16;
+
+        if(fontSizeH<fontSizeW){
+            document.body.style.fontSize = fontSizeH;
+        }
+        else{
+            document.body.style.fontSize = fontSizeW;
+        }
+    }
+    if(platform == "desktop"){
+        var fontSizeW = document.body.clientWidth/412*16;
+        var fontSizeH = document.body.clientHeight/915*16;
+
+        if(fontSizeH<fontSizeW){
+            document.body.style.fontSize = fontSizeH;
+        }
+        else{
+            document.body.style.fontSize = fontSizeW;
+        }
     }
     set_active_a();
     if(document.body.clientWidth < 1000){
@@ -467,18 +511,27 @@ setInterval(function(){
 },0)
 </script>
 <style>
-.page button {
-font-size: 75%;
+.page .desktop button{
+font-size: 62.5%;
 position: absolute;
 height: 8.75%;
 width: 15%;
 max-height: 100px;
+border-radius: 10px;
+}
+.page .mobile button{
+font-size: 100%;
+position: absolute;
+height: 7%;
+width: 40%;
+right: 25%;
+border-radius: 25px;
+}
+.page button {
 font-family: koodak;
-
 appearance: none;
 background-color: #00aa50;
 border: 1px solid rgba(27, 31, 35, .15);
-border-radius: 10px;
 box-shadow: rgba(27, 31, 35, .1) 0 5px 0;
 box-sizing: border-box;
 color: #fff;
