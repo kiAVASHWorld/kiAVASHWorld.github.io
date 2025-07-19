@@ -55,11 +55,13 @@
             this.checkCollision(objects);
         }
     }
-
-    var Cube1 = new Cube(50, 100, 25,400,200,"red");
-    var Cube2 = new Cube(100, 100, 25,-400,200,"green");
-    var Cube3 = new Cube(75, 150, 25,200,-400,"blue");
-    var Cube4 = new Cube(75, 50, 25,200,400,"black");
+    function rn(){
+        return Math.random()*100-50;
+    }
+    var Cube1 = new Cube(100, 200, 50,400+rn(),200+rn(),"red");
+    var Cube2 = new Cube(300, 200, 50,-400+rn(),200+rn(),"green");
+    var Cube3 = new Cube(200, 300, 50,200+rn(),-400+rn(),"blue");
+    var Cube4 = new Cube(200, 100, 50,200+rn(),400+rn(),"black");
 
     var allObjects = [Cube1,Cube2,Cube3,Cube4];
 
