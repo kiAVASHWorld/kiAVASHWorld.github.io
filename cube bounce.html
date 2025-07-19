@@ -1,0 +1,88 @@
+<canvas id="cv" style="background-color:white;border: 5px solid red;" width="600px" height="600px"></canvas>
+<script>
+    var cv = document.getElementById("cv");
+    var ctx = cv.getContext("2d");
+    
+    class Cube {
+        constructor(x, y, s, fx, fy, cl) {
+            this.x = x;
+            this.y = y;
+            this.s = s;
+            this.fx = fx;
+            this.fy = fy;
+            this.cl = cl;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.moveTo(this.x - this.s / 2, this.y - this.s / 2);
+            ctx.lineTo(this.x + this.s / 2, this.y - this.s / 2);
+            ctx.lineTo(this.x + this.s / 2, this.y + this.s / 2);
+            ctx.lineTo(this.x - this.s / 2, this.y + this.s / 2);
+            ctx.fillStyle = this.cl;
+            ctx.fill();
+            ctx.strokeStyle = this.cl;
+            ctx.stroke();
+            ctx.closePath();
+        }
+        forceSimulation(dt) {
+            this.x += this.fx * dt;
+            this.y += this.fy * dt;
+        }
+        checkCollision(){
+            let objects = allObjects.filter(obj => obj !== this);
+            if(this.x-this.s/2+cv.width/2 <= cv.width/2 || this.x+this.s/2-cv.width/2 >= cv.width/2){
+                this.fx = 0-this.fx;
+                this.fy = this.fy;
+            }
+            if(this.y-this.s/2+cv.height/2 <= cv.height/2 || this.y+this.s/2-cv.height/2 >= cv.height/2){
+                this.fx = this.fx;
+                this.fy = 0-this.fy;
+            }
+            for(var i=0;i<objects.length;i++){
+                if(this.x+this.s/2+objects[i].s/2 >= objects[i].x & this.x-this.s/2-objects[i].s/2 <= objects[i].x & this.y+this.s/2+objects[i].s/2 >= objects[i].y & this.y-this.s/2-objects[i].s/2 <= objects[i].y){
+                    var oldfx = this.fx;
+                    var oldfy = this.fy;
+                    this.fx = objects[i].fx;
+                    objects[i].fx = oldfx;
+                    this.fy = objects[i].fy;
+                    objects[i].fy = oldfy;
+                }
+            }
+        }
+        fullFunction(dt,objects){
+            this.draw();
+            this.forceSimulation(dt);
+            this.checkCollision(objects);
+        }
+    }
+
+    var Cube1 = new Cube(50, 100, 25,400,200,"red");
+    var Cube2 = new Cube(100, 100, 25,-400,200,"green");
+    var Cube3 = new Cube(75, 150, 25,200,-400,"blue");
+    var Cube4 = new Cube(75, 50, 25,200,400,"black");
+
+    var allObjects = [Cube1,Cube2,Cube3,Cube4];
+
+    //update
+    let lastTimestamp = 0;
+    function gameLoop(timestamp) {
+        const deltaTime = timestamp - lastTimestamp;
+        lastTimestamp = timestamp;
+
+        // پاک کردن صفحه قبل از رسم جدید
+        ctx.clearRect(0, 0, cv.width, cv.height);
+
+        // حرکت دادن مکعب‌ها
+        Cube1.fullFunction(deltaTime / 1000);
+        Cube2.fullFunction(deltaTime / 1000);
+        Cube3.fullFunction(deltaTime / 1000);
+        Cube4.fullFunction(deltaTime / 1000);
+
+        // لاگ برای تست زمان فریم
+        //console.log(`Frame rendered. Delta time: ${deltaTime.toFixed(2)}ms`);
+
+        // درخواست فریم بعدی
+        requestAnimationFrame(gameLoop);
+    }
+    requestAnimationFrame(gameLoop);
+</script>
