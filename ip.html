@@ -12,73 +12,70 @@ fetch('https://api.ipify.org?format=json')
 </script>
 <style>
     body {
-      background: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      direction: rtl;
+        background: #111;
     }
 
     #ip-display > span {
-      color: aqua;
-      padding: 10px;
+        color: aqua;
+        padding: 10px;
     }
 
     .rainbow-border {
-      top: 25px;
-      white-space: nowrap;
-      position: absolute;
-      padding: 20px 40px;
-      background: #222;
-      color: #eee;
-      font-size: 6.25vw;
-      border-radius: 12px;
-      z-index: 1;
-      overflow: hidden;
+        top: 25px;
+        white-space: nowrap;
+        position: absolute;
+        padding: 20px 40px;
+        background: #222;
+        color: #eee;
+        font-size: 6.25vw;
+        border-radius: 12px;
+        z-index: 1;
+        overflow: hidden;
+        left: 50%;
+        transform: translate(-50%);
     }
 
     .rainbow-border::before {
-      content: "";
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(270deg,
-        red,
-        orange,
-        yellow,
-        green,
-        cyan,
-        blue,
-        violet,
-        red
-      );
-      background-size: 400% 400%;
-      animation: rotateBorder 5s linear infinite;
-      z-index: -1;
-      border-radius: 14px;
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(270deg,
+            red,
+            orange,
+            yellow,
+            green,
+            cyan,
+            blue,
+            violet,
+            red
+        );
+        background-size: 400% 400%;
+        animation: rotateBorder 5s linear infinite;
+        z-index: -1;
+        border-radius: 14px;
     }
 
     .rainbow-border::after {
-      content: "";
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      right: 2px;
-      bottom: 2px;
-      background: #222;
-      z-index: -1;
-      border-radius: 10px;
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        background: #222;
+        z-index: -1;
+        border-radius: 10px;
     }
 
     @keyframes rotateBorder {
-      0% {
-        background-position: 0% 50%;
-      }
-      100% {
-        background-position: 100% 50%;
-      }
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 100% 50%;
+        }
     }
-  </style>
+</style>
