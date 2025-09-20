@@ -1,4 +1,4 @@
-<div id="ip-display" style="font-size: 100px;color: #eee;" class="rainbow-border"></div>
+<div id="ip-display" class="rainbow-border"></div>
 <script>
 fetch('https://api.ipify.org?format=json')
   .then(response => response.json())
@@ -27,11 +27,12 @@ fetch('https://api.ipify.org?format=json')
 
     .rainbow-border {
       top: 25px;
+      white-space: nowrap;
       position: absolute;
       padding: 20px 40px;
       background: #222;
-      color: white;
-      font-size: 24px;
+      color: #eee;
+      font-size: 600%;
       border-radius: 12px;
       z-index: 1;
       overflow: hidden;
