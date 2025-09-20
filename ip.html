@@ -1,0 +1,11 @@
+<div id="ip-display" style="font-size: 100px;"></div>
+<script>
+fetch('https://api.ipify.org?format=json')
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('ip-display').textContent = `IP شما: ${data.ip}`;
+  })
+  .catch(err => {
+    document.getElementById('ip-display').textContent = 'خطا در دریافت آی‌پی';
+  });
+</script>
