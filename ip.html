@@ -1,11 +1,83 @@
-<div id="ip-display" style="font-size: 100px;"></div>
+<div id="ip-display" style="font-size: 100px;color: #eee;" class="rainbow-border"></div>
 <script>
 fetch('https://api.ipify.org?format=json')
   .then(response => response.json())
   .then(data => {
-    document.getElementById('ip-display').textContent = `IP شما: ${data.ip}`;
+    var Ip = data.ip.split(".")
+    document.getElementById('ip-display').innerHTML = `IP: ${Ip[0]}<span>.</span>${Ip[1]}<span>.</span>${Ip[2]}<span>.</span>${Ip[3]}`;
   })
   .catch(err => {
     document.getElementById('ip-display').textContent = 'خطا در دریافت آی‌پی';
   });
 </script>
+<style>
+    body {
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      direction: rtl;
+    }
+
+    #ip-display > span {
+      color: aqua;
+      padding: 10px;
+    }
+
+    .rainbow-border {
+      top: 25px;
+      position: absolute;
+      padding: 20px 40px;
+      background: #222;
+      color: white;
+      font-size: 24px;
+      border-radius: 12px;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .rainbow-border::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(270deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet,
+        red
+      );
+      background-size: 400% 400%;
+      animation: rotateBorder 5s linear infinite;
+      z-index: -1;
+      border-radius: 14px;
+    }
+
+    .rainbow-border::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background: #222;
+      z-index: -1;
+      border-radius: 10px;
+    }
+
+    @keyframes rotateBorder {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+  </style>
