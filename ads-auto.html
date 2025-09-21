@@ -10,11 +10,12 @@ const target = document.getElementById("pos-article-display-73108");
 
   const observer = new MutationObserver((mutationsList, observer) => {
     if (target.innerHTML.trim() !== "") {
-      for (var i = 7; i < 19; i++) {
+      for (var i = 4; i < 19; i++) {
+        if(document.getElementsByTagName('a')[i] != null){
     setTimeout(function(index) {
         window.open(document.getElementsByTagName('a')[index].href, '_blank');
         console.log(index);
-    }, i * 1500, i);
+    }, i * 1500, i);}
 }
       observer.disconnect();
     }
