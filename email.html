@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Formspree Email Form</title>
-    <!-- Basic CSS for clean appearance -->
+    <title>Formspree Email</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -31,10 +29,13 @@
         button:hover {
             background-color: #0056b3;
         }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
-    <!-- Form to send email via Formspree -->
     <form id="email-form">
         <label>
             Your email:
@@ -44,48 +45,55 @@
             Your message:
             <textarea name="message" required>hi im test</textarea>
         </label>
-        <button type="submit" id="sendemail">Send Email to hkkiavash437@gmail.com</button>
+        <button type="submit" id="sendemail">Send</button>
     </form>
+    <div id="status"></div>
 
     <script>
-        // Handle form submission securely
-        document.getElementById('email-form').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent default form submission
+        document.getElementById('email-form').addEventListener('submit', async function(e) {
+            e.preventDefault(); // جلوگیری از submit پیش‌فرض و ریلود صفحه
 
-            const form = event.target;
+            const form = e.target;
+            const button = document.getElementById('sendemail');
+            const status = document.getElementById('status');
+
+            button.disabled = true; // غیرفعال کردن دکمه برای جلوگیری از کلیک‌های مکرر
+            status.innerText = 'در حال ارسال...';
+
+            // استفاده از FormData برای فرمت درست (بدون JSON)
             const formData = new FormData(form);
-            const emailData = {
-                email: formData.get('email'),
-                message: formData.get('message')+" , "+new Date()
-            };
-            document.getElementById("email-form").innerHTML = "wait...";
-            console.log('Sending data:', emailData); // Debug form data
+            // اضافه کردن _next برای redirect (اختیاری، اما کمک می‌کنه)
+            formData.append('_next', '/thank-you'); // صفحه تشکر (اختیاری)
 
             try {
+                console.log('درخواست ارسال: ', Object.fromEntries(formData)); // لاگ داده‌ها
+
                 const response = await fetch('https://formspree.io/f/xzzjenvw', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(emailData)
+                    body: formData, // FormData بدون Content-Type (مرورگر خودش تنظیم می‌کنه)
+                    mode: 'cors', // مدیریت CORS
+                    credentials: 'same-origin' // اگر نیاز به کوکی باشه
                 });
 
+                console.log('پاسخ سرور:', response.status, response.statusText);
+
                 if (response.ok) {
-                    document.getElementById("email-form").innerHTML = 'Email sent successfully! , '+ response.status;
-                    console.log('Email sent successfully!', response.status);
-                    console.log('Email sent to hkkiavash437@gmail.com!');
-                    form.reset(); // Clear form
+                    status.innerText = 'ایمیل با موفقیت ارسال شد!';
+                    form.reset(); // پاک کردن فرم
+                    console.log('موفقیت: ایمیل به hkkiavash437@gmail.com ارسال شد.');
                 } else {
-                    const error = await response.json();
-                    document.getElementById("email-form").innerHTML = 'Failed to send email: '+response.status+" , "+ error;
-                    console.error('Failed to send email:', response.status, error);
-                    console.log(`Failed to send email: ${error.error || 'Unknown error'} (Status: ${response.status})`);
+                    const errorText = await response.text();
+                    status.innerText = `خطا در ارسال: ${response.status} - ${errorText}`;
+                    console.error('جزئیات خطا:', errorText);
                 }
             } catch (error) {
-                document.getElementById("email-form").innerHTML = 'Fetch error: '+ error.message;
-                console.error('Fetch error:', error.message);
-                console.log('Error sending email: ' + error.message);
+                console.error('خطای fetch:', error);
+                status.innerText = 'خطای شبکه: Failed to fetch. چک کنسول رو ببین.';
+                if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
+                    console.error('احتمالاً CORS یا مشکل شبکه. URL رو چک کن.');
+                }
+            } finally {
+                button.disabled = false; // فعال کردن دوباره دکمه
             }
         });
     </script>
