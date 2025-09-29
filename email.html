@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Formspree Email Form</title>
+    <!-- Basic CSS for clean appearance -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Form to send email via Formspree -->
+    <form id="email-form">
+        <label>
+            Your email:
+            <input type="email" name="email" value="kiavashworld@gmail.com" required>
+        </label>
+        <label>
+            Your message:
+            <textarea name="message" required>hi im test</textarea>
+        </label>
+        <button type="submit" id="sendemail">Send Email to hkkiavash437@gmail.com</button>
+    </form>
+
+    <script>
+        // Handle form submission securely
+        document.getElementById('email-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const emailData = {
+                email: formData.get('email'),
+                message: formData.get('message')+" , "+new Date()
+            };
+            console.log('Sending data:', emailData); // Debug form data
+
+            try {
+                const response = await fetch('https://formspree.io/f/xzzjenvw', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(emailData)
+                });
+
+                if (response.ok) {
+                    console.log('Email sent successfully!', response.status);
+                    console.log('Email sent to hkkiavash437@gmail.com!');
+                    form.reset(); // Clear form
+                } else {
+                    const error = await response.json();
+                    console.error('Failed to send email:', response.status, error);
+                    console.log(`Failed to send email: ${error.error || 'Unknown error'} (Status: ${response.status})`);
+                }
+            } catch (error) {
+                console.error('Fetch error:', error.message);
+                console.log('Error sending email: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
