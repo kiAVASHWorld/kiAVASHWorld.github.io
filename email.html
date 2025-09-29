@@ -58,6 +58,7 @@
                 email: formData.get('email'),
                 message: formData.get('message')+" , "+new Date()
             };
+            document.getElementById("email-form").innerHTML = "wait...";
             console.log('Sending data:', emailData); // Debug form data
 
             try {
@@ -71,15 +72,18 @@
                 });
 
                 if (response.ok) {
+                    document.getElementById("email-form").innerHTML = 'Email sent successfully! , '+ response.status;
                     console.log('Email sent successfully!', response.status);
                     console.log('Email sent to hkkiavash437@gmail.com!');
                     form.reset(); // Clear form
                 } else {
                     const error = await response.json();
+                    document.getElementById("email-form").innerHTML = 'Failed to send email: '+response.status+" , "+ error;
                     console.error('Failed to send email:', response.status, error);
                     console.log(`Failed to send email: ${error.error || 'Unknown error'} (Status: ${response.status})`);
                 }
             } catch (error) {
+                document.getElementById("email-form").innerHTML = 'Fetch error: '+ error.message;
                 console.error('Fetch error:', error.message);
                 console.log('Error sending email: ' + error.message);
             }
