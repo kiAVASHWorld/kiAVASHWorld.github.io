@@ -5,26 +5,37 @@
 1.
 <div id="pos-article-display-110253"></div>
 <script>
-    var inte = setInterval(function(){
+    var winds = [];
+    var aas =[];
+    const delay = (delayInms) => {
+  return new Promise(resolve => setTimeout(resolve, delayInms));
+};
+    var inte = setInterval(async function(){
         var aa = document.getElementsByTagName("a");
         var alen = aa.length;
         if(alen == 19){
-            for(var i = 7;i<13;i++){
-                aa[i].click();
-            }
             clearInterval(inte);
+            for(var i = 7;i<13;i++){
+                await delay(5000);
+                aa[i].click();
+                await delay(5000);
+            }
         }
         if(alen == 13){
+           clearInterval(inte);
             for(var i = 5;i<9;i++){
+                await delay(5000);
                 aa[i].click();
+                await delay(5000);
             }
-            clearInterval(inte);
         }
         if(alen == 7){
-            for(var i = 3;i<5;i++){
-                aa[i].click();
-            }
             clearInterval(inte);
+            for(var i = 3;i<5;i++){
+                await delay(5000);
+                aa[i].click();
+                await delay(5000);
+            }
         }
     },100)
 </script>
